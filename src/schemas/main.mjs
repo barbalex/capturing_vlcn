@@ -15,5 +15,3 @@ export default {
     SELECT crsql_as_crr('projects');
   `,
 };
-// CREATE TABLE IF NOT EXISTS projects (id TEXT NOT NULL PRIMARY KEY, account_id TEXT NOT NULL, name TEXT, label TEXT, crs INTEGER DEFAULT 4326, deleted INTEGER DEFAULT 0, use_labels INTEGER DEFAULT 0);
-// SELECT crsql_as_crr('projects');
