@@ -21,5 +21,9 @@ export default {
     SELECT crsql_as_crr('rows');
     CREATE TABLE IF NOT EXISTS tile_layers (id TEXT NOT NULL PRIMARY KEY, label TEXT, sort INTEGER, active INTEGER, project_id TEXT, type TEXT, wmts_url_template TEXT, wmts_subdomains TEXT, max_zoom REAL, min_zoom REAL, opacity REAL, wms_base_url TEXT, wms_format TEXT, wms_layers TEXT, wms_parameters TEXT, wms_styles TEXT, wms_transparent INTEGER, wms_version TEXT, wms_info_format TEXT, wms_queryable INTEGER, grayscale INTEGER DEFAULT 0, local_data_size REAL, local_data_bounds TEXT, deleted INTEGER DEFAULT 0);
     SELECT crsql_as_crr('tile_layers');
+    CREATE TABLE IF NOT EXISTS vector_layers (id TEXT NOT NULL PRIMARY KEY, label TEXT, sort INTEGER, active INTEGER, project_id TEXT, type TEXT, url TEXT, max_zoom REAL, min_zoom REAL, type_name TEXT, wfs_version TEXT, output_format TEXT, opacity REAL, max_features INTEGER DEFAULT 1000, feature_count INTEGER, point_count INTEGER, line_count INTEGER, polygon_count INTEGER, deleted INTEGER DEFAULT 0);
+    SELECT crsql_as_crr('vector_layers');
+    CREATE TABLE IF NOT EXISTS project_users (id TEXT NOT NULL PRIMARY KEY, project_id TEXT, email TEXT, role TEXT, deleted INTEGER DEFAULT 0);
+    SELECT crsql_as_crr('project_users');
   `,
 };
