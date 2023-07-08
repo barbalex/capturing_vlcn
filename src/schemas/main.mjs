@@ -19,5 +19,7 @@ export default {
     SELECT crsql_as_crr('fields');
     CREATE TABLE IF NOT EXISTS rows (id TEXT NOT NULL PRIMARY KEY, table_id TEXT, geometry TEXT, bbox TEXT, data TEXT, deleted INTEGER DEFAULT 0);
     SELECT crsql_as_crr('rows');
+    CREATE TABLE IF NOT EXISTS tile_layers (id TEXT NOT NULL PRIMARY KEY, label TEXT, sort INTEGER, active INTEGER, project_id TEXT, type TEXT, wmts_url_template TEXT, wmts_subdomains TEXT, max_zoom REAL, min_zoom REAL, opacity REAL, wms_base_url TEXT, wms_format TEXT, wms_layers TEXT, wms_parameters TEXT, wms_styles TEXT, wms_transparent INTEGER, wms_version TEXT, wms_info_format TEXT, wms_queryable INTEGER, grayscale INTEGER DEFAULT 0, local_data_size REAL, local_data_bounds TEXT, deleted INTEGER DEFAULT 0);
+    SELECT crsql_as_crr('tile_layers');
   `,
 };
