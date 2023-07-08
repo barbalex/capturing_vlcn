@@ -17,5 +17,7 @@ export default {
     SELECT crsql_as_crr('tables');
     CREATE TABLE IF NOT EXISTS fields (id TEXT NOT NULL PRIMARY KEY, table_id TEXT, name TEXT, label TEXT, sort INTEGER, table_rel TEXT, is_internal_id INTEGER DEFAULT 0, field_type TEXT, widget_type TEXT, options_table text, standard_value TEXT, deleted INTEGER DEFAULT 0);
     SELECT crsql_as_crr('fields');
+    CREATE TABLE IF NOT EXISTS rows (id TEXT NOT NULL PRIMARY KEY, table_id TEXT, geometry TEXT, bbox TEXT, data TEXT, deleted INTEGER DEFAULT 0);
+    SELECT crsql_as_crr('rows');
   `,
 };
