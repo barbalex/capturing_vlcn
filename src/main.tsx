@@ -1,11 +1,18 @@
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
+import ReactDOM from 'react-dom/client'
+import 'react-datepicker/dist/react-datepicker.css'
+import { registerLocale, setDefaultLocale } from 'react-datepicker'
+import { de } from 'date-fns/locale'
 
-import { newDbid } from "@vlcn.io/direct-connect-browser";
-import schema from "./schemas/main.mjs";
-import { endpoints } from "./SyncEndpoints.ts";
-import { DBProvider } from "@vlcn.io/react";
+import App from './App.tsx'
+import './index.css'
+
+import { newDbid } from '@vlcn.io/direct-connect-browser'
+import schema from './schemas/main.mjs'
+import { endpoints } from './SyncEndpoints.ts'
+import { DBProvider } from '@vlcn.io/react'
+
+registerLocale('de', de)
+setDefaultLocale('de')
 
 /**
  * Returns the ID of a remote database to sync with or creates a new one
@@ -25,44 +32,44 @@ import { DBProvider } from "@vlcn.io/react";
  * and server.
  */
 function getRemoteDbid(hash: HashBag): string {
-  return hash.dbid || localStorage.getItem("remoteDbid") || newDbid();
+  return hash.dbid || localStorage.getItem('remoteDbid') || newDbid()
 }
 
-const hash = parseHash();
-const dbid = getRemoteDbid(hash);
+const hash = parseHash()
+const dbid = getRemoteDbid(hash)
 if (dbid != hash.dbid) {
-  hash.dbid = dbid;
-  window.location.hash = writeHash(hash);
+  hash.dbid = dbid
+  window.location.hash = writeHash(hash)
 }
-localStorage.setItem("remoteDbid", dbid);
+localStorage.setItem('remoteDbid', dbid)
 
 // Launch our app.
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <DBProvider dbid={dbid} schema={schema} endpoints={endpoints}>
     <App dbid={dbid} />
-  </DBProvider>
-);
+  </DBProvider>,
+)
 
-type HashBag = { [key: string]: string };
+type HashBag = { [key: string]: string }
 function parseHash(): HashBag {
-  const hash = window.location.hash;
-  const ret: { [key: string]: string } = {};
+  const hash = window.location.hash
+  const ret: { [key: string]: string } = {}
   if (hash.length > 1) {
-    const substr = hash.substring(1);
-    const parts = substr.split(",");
+    const substr = hash.substring(1)
+    const parts = substr.split(',')
     for (const part of parts) {
-      const [key, value] = part.split("=");
-      ret[key] = value;
+      const [key, value] = part.split('=')
+      ret[key] = value
     }
   }
 
-  return ret;
+  return ret
 }
 
 function writeHash(hash: HashBag) {
-  const parts = [];
+  const parts = []
   for (const key in hash) {
-    parts.push(`${key}=${hash[key]}`);
+    parts.push(`${key}=${hash[key]}`)
   }
-  return parts.join(",");
+  return parts.join(',')
 }
