@@ -7,24 +7,11 @@ import {
   DefaultConfig,
 } from '@vlcn.io/direct-connect-nodejs'
 import { JsonSerializer } from '@vlcn.io/direct-connect-common'
-import childProcess from 'child_process'
+import { spawn } from 'node:child_process'
 import cors from 'cors'
-
-// console.log("server.js, running");
-
-// trying to debug error:
-// Error: spawn ./node_modules/.bin/vite ENOENT
-// https://stackoverflow.com/a/27883443/712005
-// (function () {
-//   var oldSpawn = childProcess.spawn;
-//   function mySpawn() {
-//     console.log("spawn called");
-//     console.log(arguments);
-//     var result = oldSpawn.apply(this, arguments);
-//     return result;
-//   }
-//   childProcess.spawn = mySpawn;
-// })();
+import path from 'node:path'
+import os from 'node:os'
+import process from 'node:process'
 
 const PORT = parseInt(process.env.PORT || '8080')
 
@@ -112,8 +99,13 @@ app.listen(PORT, () =>
 )
 
 if (process.argv.includes('--dev')) {
-  const vite = childProcess.spawn('./node_modules/.bin/vite', {
+  let cmd = 'vite'
+  if (isWindows()) {
+    cmd = 'vite.CMD'
+  }
+  const vite = spawn(path.join('.', 'node_modules', '.bin', cmd), {
     stdio: 'inherit',
+    shell: true,
   })
   vite.on('close', (code) => {
     console.log(`vite exited with code ${code}`)
@@ -135,4 +127,8 @@ function makeSafe(handler) {
       res.status(500).json({ error: err.message })
     }
   }
+}
+
+function isWindows() {
+  return os.platform() === 'win32'
 }

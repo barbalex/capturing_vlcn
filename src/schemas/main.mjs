@@ -3,12 +3,15 @@
  * 1. Restarting the server
  * 2. Refreshing the browser
  *
- * Other than that, DB migrations are automatically handled.
- * WARNING: not null without default value is not supported
+ * Other than that, DB migrations are automatically handled*
+ *
+ * *Note: the auto-migration path is still _beta_ quality.
+ * Given that, you may need to reset your DB after certain schema changes.
+ * You can disable auto-migration in production.
  */
 export default {
-  namespace: "default",
-  name: "main",
+  namespace: 'default',
+  name: 'main',
   active: true,
   content: /*sql*/ `
     CREATE TABLE IF NOT EXISTS projects (id TEXT NOT NULL PRIMARY KEY, account_id TEXT, name TEXT, label TEXT, crs INTEGER DEFAULT 4326, deleted INTEGER DEFAULT 0, use_labels INTEGER DEFAULT 0);
@@ -26,4 +29,4 @@ export default {
     CREATE TABLE IF NOT EXISTS project_users (id TEXT NOT NULL PRIMARY KEY, project_id TEXT, email TEXT, role TEXT, deleted INTEGER DEFAULT 0);
     SELECT crsql_as_crr('project_users');
   `,
-};
+}
