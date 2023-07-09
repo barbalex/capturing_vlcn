@@ -61,7 +61,16 @@ app.post(
   '/sync/create-or-migrate',
   makeSafe(async (req, res) => {
     const msg = serializer.decode(req.body)
+    // https://github.com/vlcn-io/cr-sqlite/issues/273
+    // console.log('create-or-migrate, msg:', msg)
+    // let ret
+    // try {
+    //   ret = await syncSvc.createOrMigrateDatabase(msg)
+    // } catch (error) {
+    //   console.log('create-or-migrate, error from createOrMigrateDatabase:', ret)
+    // }
     const ret = await syncSvc.createOrMigrateDatabase(msg)
+    // console.log('create-or-migrate, ret:', ret)
     res.json(serializer.encode(ret))
   }),
 )
