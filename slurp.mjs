@@ -24,13 +24,17 @@ async function slurp() {
       return import("./" + filePath);
     })
   );
+  // console.log("slurp, schemas:", schemas);
 
   // INSERT OR IGNORE each schema
   const svcDb = new ServiceDB(DefaultConfig, true);
+  // console.log("slurp, svcDb:", svcDb);
   const db = svcDb.__internal_getDb();
+  // console.log("slurp, db:", db);
   db.transaction(() => {
     for (const mod of schemas) {
       const s = mod.default;
+      // console.log("slurp, will prepare schema for s:", s);
       db.prepare(
         `INSERT OR IGNORE INTO schema (namespace, name, version, content, active) VALUES (?, ?, ?, ?, ?);`
       ).run(
@@ -42,6 +46,7 @@ async function slurp() {
       );
     }
   })();
+  // console.log("slurp, db.transaction passed");
 }
 
 slurp();

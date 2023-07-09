@@ -7,14 +7,32 @@ import {
   DefaultConfig,
 } from "@vlcn.io/direct-connect-nodejs";
 import { JsonSerializer } from "@vlcn.io/direct-connect-common";
-import { spawn } from "child_process";
+import childProcess from "child_process";
 import cors from "cors";
+
+// console.log("server.js, running");
+
+// trying to debug error:
+// Error: spawn ./node_modules/.bin/vite ENOENT
+// https://stackoverflow.com/a/27883443/712005
+// (function () {
+//   var oldSpawn = childProcess.spawn;
+//   function mySpawn() {
+//     console.log("spawn called");
+//     console.log(arguments);
+//     var result = oldSpawn.apply(this, arguments);
+//     return result;
+//   }
+//   childProcess.spawn = mySpawn;
+// })();
 
 const PORT = parseInt(process.env.PORT || "8080");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+// console.log("server.js, app:", app);
 
 const svcDb = new ServiceDB(DefaultConfig, true);
 const dbCache = new DBCache(DefaultConfig, (name, version) => {
@@ -89,9 +107,16 @@ app.listen(PORT, () =>
 );
 
 if (process.argv.includes("--dev")) {
-  const vite = spawn("./node_modules/.bin/vite", {
-    stdio: "inherit",
-  });
+  // TODO: this throws: Error: spawn ./node_modules/.bin/vite ENOENT
+  console.log("Starting vite");
+  let vite;
+  try {
+    vite = childProcess.spawn("./node_modules/.bin/vite", {
+      stdio: "inherit",
+    });
+  } catch (error) {
+    console.log("error starting vite: ", error);
+  }
   vite.on("close", (code) => {
     console.log(`vite exited with code ${code}`);
     process.exit(code);
