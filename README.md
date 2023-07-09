@@ -18,6 +18,6 @@ Deployed Scaffolding: https://vite-starter.fly.dev/ Try it out! Collaborate betw
 
 # important
 
-(not using pnpm) did NOT work on windows (powershell)
+(using npm or pnpm) did NOT work on windows (powershell)
 Throws: `Error: spawn ./node_modules/.bin/vite ENOENT`
-need to run in ubuntu
+need to run in ubuntu. then both npm and pnpm work fine.
