@@ -41,6 +41,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  uuidv7:
+    specifier: ^0.5.3
+    version: 0.5.3
 
 devDependencies:
   '@types/react':
@@ -4364,6 +4367,11 @@ packages:
   /utils-merge@1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
+    dev: false
+
+  /uuidv7@0.5.3:
+    resolution: {integrity: sha512-N7GGRx9Lj8s1P6N41IXaOm9ymXoq5J+VCdmuYkknc7Xl7R4kyh/5PC8FPJ2JA7GeigZPRvwDvTPQSsCf5dxAqA==}
+    hasBin: true
     dev: false
 
   /vary@1.1.2:
