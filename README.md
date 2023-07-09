@@ -18,5 +18,5 @@ Deployed Scaffolding: https://vite-starter.fly.dev/ Try it out! Collaborate betw
 
 # important
 
-not using pnpm, did NOT work on windows
+(not using pnpm) did NOT work on windows (powershell)
 need to run in ubuntu
