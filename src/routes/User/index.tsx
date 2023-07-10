@@ -1,20 +1,18 @@
 import { useEffect, useContext, useCallback, useState, useMemo } from 'react'
 import { observer } from 'mobx-react-lite'
 import Button from '@mui/material/Button'
-import { useLiveQuery } from 'dexie-react-hooks'
 import { useNavigate } from 'react-router-dom'
 import styled from '@emotion/styled'
 
 import StoreContext from '../../storeContext'
-import Login from '../../components/Login'
+import { Login } from '../../components/Login'
 import constants from '../../utils/constants'
 import logout from '../../utils/logout'
-import { supabase } from '../../supabaseClient'
 import { dexie } from '../../dexieClient'
 import { ErrorBoundary } from '../../components/shared/ErrorBoundary'
-import Accordion from '../../components/shared/Accordion'
-import PendingOperationsDialog from './PendingOperationsDialog'
-import PurgeDialog from './PurgeDialog'
+import { Accordion } from '../../components/shared/Accordion'
+import { PendingOperationsDialog } from './PendingOperationsDialog'
+import { PurgeDialog } from './PurgeDialog'
 import { IStore } from '../../store'
 
 const Container = styled.div`
@@ -38,7 +36,7 @@ const AccordionP = styled.p`
  * 1. do it without reloading and navigating
  * 2. enable resetting settings while keeping them when resetting data
  */
-const UserPage = () => {
+export const User = observer(() => {
   const store: IStore = useContext(StoreContext)
   const { online, session } = store
 
@@ -54,8 +52,8 @@ const UserPage = () => {
 
   const [pendingOperationsDialogOpen, setPendingOperationsDialogOpen] =
     useState<boolean>(false)
-  const queuedUpdatesCount =
-    useLiveQuery(async () => await dexie.queued_updates.count(), []) ?? 0
+  // TODO: get number somehow
+  const queuedUpdatesCount = 0
 
   const onClickLogout = useCallback(() => {
     if (queuedUpdatesCount) return setPendingOperationsDialogOpen(true)
@@ -75,7 +73,8 @@ const UserPage = () => {
   const [resetTitle, setResetTitle] = useState<string>('Passwort zurücksetzen')
   const onClickResetPassword = useCallback(async () => {
     setResetTitle('...')
-    const { error } = await supabase.auth.api.resetPasswordForEmail(email)
+    // TODO: reset password using firebase
+    // const { error } = await supabase.auth.api.resetPasswordForEmail(email)
     if (error) {
       setResetTitle('Fehler: Passwort nicht zurückgesetzt')
       setTimeout(() => {
@@ -185,6 +184,4 @@ const UserPage = () => {
       />
     </ErrorBoundary>
   )
-}
-
-export default observer(UserPage)
+})

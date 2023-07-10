@@ -1,4 +1,4 @@
-import Accordion from '@mui/material/Accordion'
+import MuiAccordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
@@ -8,7 +8,7 @@ import styled from '@emotion/styled'
 const ExpandIcon = styled(MdExpandMore)`
   font-size: 1.5rem;
 `
-const StyledAccordion = styled(Accordion)`
+const StyledAccordion = styled(MuiAccordion)`
   margin-top: 10px;
   border-radius: 4px !important;
   &:before {
@@ -25,7 +25,7 @@ interface Props {
   summary: string
 }
 
-const AccordionComponent = ({
+export const Accordion = ({
   summary,
   children,
 }: React.PropsWithChildren<Props>) => (
@@ -36,5 +36,3 @@ const AccordionComponent = ({
     <AccordionDetails>{children}</AccordionDetails>
   </StyledAccordion>
 )
-
-export default AccordionComponent

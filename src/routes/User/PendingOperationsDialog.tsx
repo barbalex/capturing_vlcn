@@ -25,54 +25,54 @@ interface Props {
   queuedUpdatesCount: number
 }
 
-const PendingOperationsDialog = ({
-  pendingOperationsDialogOpen,
-  setPendingOperationsDialogOpen,
-  queuedUpdatesCount,
-}) => {
-  const navigate = useNavigate()
-  const store: IStore = useContext(StoreContext)
+export const PendingOperationsDialog = observer(
+  ({
+    pendingOperationsDialogOpen,
+    setPendingOperationsDialogOpen,
+    queuedUpdatesCount,
+  }) => {
+    const navigate = useNavigate()
+    const store: IStore = useContext(StoreContext)
 
-  return (
-    <Dialog
-      open={pendingOperationsDialogOpen}
-      onClose={() => setPendingOperationsDialogOpen(false)}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-      maxWidth="md"
-    >
-      <DialogTitle id="alert-dialog-title">Wirklich abmelden?</DialogTitle>
-      <DialogContent>
-        <DialogContentText id="alert-dialog-description">
-          {`Beim Abmelden werden aus Datenschutzgründen alle lokalen Daten
+    return (
+      <Dialog
+        open={pendingOperationsDialogOpen}
+        onClose={() => setPendingOperationsDialogOpen(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        maxWidth="md"
+      >
+        <DialogTitle id="alert-dialog-title">Wirklich abmelden?</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {`Beim Abmelden werden aus Datenschutzgründen alle lokalen Daten
         entfernt. Es gibt noch ${queuedUpdatesCount} ausstehende
         Operationen. Wenn Sie jetzt abmelden, gehen diese verloren.
         Vermutlich warten Sie besser, bis diese Operationen an den Server
         übermittelt wurden.`}
-        </DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button
-          onClick={() => setPendingOperationsDialogOpen(false)}
-          color="primary"
-          autoFocus
-          variant="outlined"
-        >
-          Ich bleibe angemeldet, um keine Daten zu verlieren
-        </Button>
-        <RiskyButton
-          onClick={() => {
-            setPendingOperationsDialogOpen(false)
-            logout({ store, navigate })
-          }}
-          variant="outlined"
-          startIcon={<FaExclamationCircle />}
-        >
-          Ich will abmelden, obwohl ich Daten verliere
-        </RiskyButton>
-      </DialogActions>
-    </Dialog>
-  )
-}
-
-export default observer(PendingOperationsDialog)
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => setPendingOperationsDialogOpen(false)}
+            color="primary"
+            autoFocus
+            variant="outlined"
+          >
+            Ich bleibe angemeldet, um keine Daten zu verlieren
+          </Button>
+          <RiskyButton
+            onClick={() => {
+              setPendingOperationsDialogOpen(false)
+              logout({ store, navigate })
+            }}
+            variant="outlined"
+            startIcon={<FaExclamationCircle />}
+          >
+            Ich will abmelden, obwohl ich Daten verliere
+          </RiskyButton>
+        </DialogActions>
+      </Dialog>
+    )
+  },
+)

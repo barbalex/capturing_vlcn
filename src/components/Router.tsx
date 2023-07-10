@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import { Home } from '../routes/Home'
 import { Docs } from '../routes/Docs'
-// import User from '../routes/User'
+import { User } from '../routes/User'
 import { ImageLayerTypes } from './Docs/ImageLayerTypes'
 import { OfflineMaps } from './Docs/OfflineMaps'
 import { DataSynchronisation } from './Docs/DataSynchronisation'
@@ -29,7 +29,7 @@ export const RouterComponent = (): React.FC => (
   <Routes>
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
-      {/* <Route path="user" element={<User />} /> */}
+      <Route path="user" element={<User />} />
       {/* <Route path="projects/*" element={<ProjectsPage />}>
         <Route index element={<ProjectsComponent />} />
         <Route path=":projectId" element={<ProjectComponent />} />

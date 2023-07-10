@@ -21,7 +21,7 @@ interface Props {
   queuedUpdatesCount: number
 }
 
-const PurgeDialog = ({
+export const PurgeDialog = ({
   purgeDialogOpen,
   setPurgeDialogOpen,
   queuedUpdatesCount,
@@ -58,6 +58,7 @@ const PurgeDialog = ({
           onClick={async () => {
             setPurgeDialogOpen(false)
             await dexie.delete()
+            // TODO: remove data from sqlite
             navigate('/')
             window.location.reload(true)
           }}
@@ -71,5 +72,3 @@ const PurgeDialog = ({
     </Dialog>
   )
 }
-
-export default PurgeDialog
