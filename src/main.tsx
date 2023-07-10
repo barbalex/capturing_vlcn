@@ -51,7 +51,7 @@ localStorage.setItem('remoteDbid', dbid)
 // Launch our app.
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <DBProvider dbid={dbid} schema={schema} endpoints={endpoints}>
-    <App dbid={dbid} />
+    <App />
   </DBProvider>,
 )
 

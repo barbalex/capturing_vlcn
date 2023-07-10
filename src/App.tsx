@@ -36,7 +36,8 @@ async function persist() {
 type TestRecord = { id: string; name: string }
 const wordOptions = { exactly: 3, join: ' ' }
 
-function App({ dbid }: { dbid: string }) {
+function App() {
+  const dbid: string = localStorage.getItem('remoteDbid')
   const ctx = useDB(dbid)
   const [store, setStore] = useState<IStore>()
 
@@ -115,7 +116,7 @@ function App({ dbid }: { dbid: string }) {
             <NavigationSyncController />
             <ColumnController />
             <ApiDetector />
-            <RouterComponent />
+            {/* <RouterComponent /> */}
             <div className="card">
               <button onClick={addData} style={{ marginRight: '1em' }}>
                 Add Data
