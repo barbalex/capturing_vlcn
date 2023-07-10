@@ -83,10 +83,7 @@ app.get(
   }),
 )
 
-app.get('/health', (req, res) => {
-  console.log('server.js: health check')
-  res.status(200).send('ok')
-})
+app.get('/health', (req, res) => res.status(200).send('ok'))
 
 app.listen(PORT, () =>
   console.log(`Server listening at http://localhost:${PORT}`),

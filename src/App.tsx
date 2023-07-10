@@ -20,6 +20,7 @@ import { dexie } from './dexieClient'
 import { NavigationSyncController } from './components/NavigationSyncController'
 import { ColumnController } from './components/ColumnController'
 import { ApiDetector } from './components/ApiDetector'
+import RouterComponent from './components/Router'
 
 // TODO: auth via firebase?
 
@@ -117,6 +118,7 @@ function App({ dbid }: { dbid: string }) {
             <NavigationSyncController />
             <ColumnController />
             <ApiDetector />
+            <RouterComponent />
             <div>
               <a href="https://vitejs.dev" target="_blank">
                 <img src={viteLogo} className="logo" alt="Vite logo" />
