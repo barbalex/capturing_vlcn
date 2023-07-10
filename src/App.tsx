@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useCachedState, useQuery } from '@vlcn.io/react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -33,6 +33,7 @@ const wordOptions = { exactly: 3, join: ' ' }
 
 function App({ dbid }: { dbid: string }) {
   const ctx = useDB(dbid)
+  const [store, setStore] = useState<IStore>()
 
   useEffect(() => {
     // on first render regenerate store (if exists)
