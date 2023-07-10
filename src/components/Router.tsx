@@ -8,7 +8,7 @@ import { OfflineMaps } from './Docs/OfflineMaps'
 import { DataSynchronisation } from './Docs/DataSynchronisation'
 import { DataVersioning } from './Docs/DataVersioning'
 import { DataHistory } from './Docs/DataHistory'
-import { ProjectsPage } from '../routes/Projects'
+import { Projects } from '../routes/Projects'
 import { FourOhFour } from '../routes/404'
 import ProjectsComponent from './Projects'
 // import ProjectComponent from './Project'
@@ -30,7 +30,7 @@ export const RouterComponent = (): React.FC => (
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
       <Route path="user" element={<User />} />
-      {/* <Route path="projects/*" element={<ProjectsPage />}>
+      {/* <Route path="projects/*" element={<Projects />}>
         <Route index element={<ProjectsComponent />} />
         <Route path=":projectId" element={<ProjectComponent />} />
         <Route path=":projectId/tables" element={<TablesComponent />} />
