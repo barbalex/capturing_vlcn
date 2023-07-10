@@ -116,7 +116,6 @@ function App({ dbid }: { dbid: string }) {
             <ColumnController />
             <ApiDetector />
             <RouterComponent />
-            <h1>Vite + React + Vulcan</h1>
             <div className="card">
               <button onClick={addData} style={{ marginRight: '1em' }}>
                 Add Data
@@ -144,20 +143,7 @@ function App({ dbid }: { dbid: string }) {
                   ))}
                 </tbody>
               </table>
-              <p>
-                Edit <code>src/App.tsx</code> and save to test HMR
-              </p>
-              <p>
-                Open another browser and navigate to{' '}
-                <a href={window.location.href} target="_blank">
-                  this window's url
-                </a>{' '}
-                to test sync.
-              </p>
             </div>
-            <p className="read-the-docs">
-              Click on the Vite, React and Vulcan logos to learn more
-            </p>
           </MobxProvider>
         </ThemeProvider>
       </StyledEngineProvider>

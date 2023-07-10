@@ -16,6 +16,8 @@ Demo Video: [![example scaffolding result](https://img.youtube.com/vi/QJBQLYmXRe
 
 Deployed Scaffolding: https://vite-starter.fly.dev/ Try it out! Collaborate between all your devices.
 
+Open another browser at the same url and you will see the data sync between the two.
+
 # important
 
 (using npm or pnpm) did NOT work on windows (powershell)
