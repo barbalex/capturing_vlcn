@@ -25,7 +25,7 @@ import { Home } from '../routes/Home'
 import { Layout } from './Layout'
 // import QueuedUpdates from '../routes/QueuedUpdates'
 
-const RouterComponent = (): React.FC => (
+export const RouterComponent = (): React.FC => (
   <Routes>
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
@@ -95,5 +95,3 @@ const RouterComponent = (): React.FC => (
     </Route>
   </Routes>
 )
-
-export default RouterComponent

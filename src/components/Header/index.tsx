@@ -25,7 +25,7 @@ const StyledAppBar = styled(AppBar)`
     display: none !important;
   }
 `
-export const Header =observer( () => {
+export const Header = observer(() => {
   const store: IStore = useContext(storeContext)
   const { session } = store
   // console.log({ session })
@@ -40,5 +40,3 @@ export const Header =observer( () => {
     </ErrorBoundary>
   )
 })
-
-export default observer(Header

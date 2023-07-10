@@ -20,7 +20,7 @@ import { dexie } from './dexieClient'
 import { NavigationSyncController } from './components/NavigationSyncController'
 import { ColumnController } from './components/ColumnController'
 import { ApiDetector } from './components/ApiDetector'
-import RouterComponent from './components/Router'
+import { RouterComponent } from './components/Router'
 
 // TODO: auth via firebase?
 
