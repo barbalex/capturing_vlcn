@@ -3,7 +3,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { registerLocale, setDefaultLocale } from 'react-datepicker'
 import { de } from 'date-fns/locale'
 
-import App from './App.tsx'
+import { App } from './App.tsx'
 import './index.css'
 
 import { newDbid } from '@vlcn.io/direct-connect-browser'
