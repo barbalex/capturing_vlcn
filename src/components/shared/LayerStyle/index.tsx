@@ -12,7 +12,7 @@ import { useParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 
 import Checkbox2States from '../Checkbox2States'
-import ErrorBoundary from '../ErrorBoundary'
+import { ErrorBoundary } from '../ErrorBoundary'
 import ColorPicker from '../ColorPicker'
 import {
   dexie,

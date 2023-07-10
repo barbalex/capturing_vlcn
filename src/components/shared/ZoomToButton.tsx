@@ -3,7 +3,7 @@ import { MdCenterFocusWeak } from 'react-icons/md'
 import IconButton from '@mui/material/IconButton'
 import { observer } from 'mobx-react-lite'
 
-import ErrorBoundary from './ErrorBoundary'
+import { ErrorBoundary } from './ErrorBoundary'
 import storeContext from '../../storeContext'
 import boundsFromBbox from '../../utils/boundsFromBbox'
 import { IStore } from '../../store'

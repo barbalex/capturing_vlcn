@@ -1,5 +1,5 @@
 import React from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
+import { ErrorBoundary as ErrorBoundaryComponent } from 'react-error-boundary'
 import styled from '@emotion/styled'
 import Button from '@mui/material/Button'
 
@@ -61,10 +61,8 @@ const ErrorFallback = ({
   </Container>
 )
 
-const MyErrorBoundary = ({ children }) => (
-  <ErrorBoundary FallbackComponent={ErrorFallback} onReset={onReload}>
+export const ErrorBoundary = ({ children }) => (
+  <ErrorBoundaryComponent FallbackComponent={ErrorFallback} onReset={onReload}>
     {children}
-  </ErrorBoundary>
+  </ErrorBoundaryComponent>
 )
-
-export default MyErrorBoundary

@@ -4,10 +4,10 @@ import Toolbar from '@mui/material/Toolbar'
 import styled from '@emotion/styled'
 import { observer } from 'mobx-react-lite'
 
-import ErrorBoundary from '../shared/ErrorBoundary'
+import { ErrorBoundary } from '../shared/ErrorBoundary'
 import constants from '../../utils/constants'
-import Anonymus from './Anonymus'
-import Authenticated from './Authenticated'
+import { HeaderAnonymus } from './Anonymus'
+import { HeaderAuthenticated } from './Authenticated'
 import storeContext from '../../storeContext'
 import { IStore } from '../../store'
 
@@ -25,7 +25,7 @@ const StyledAppBar = styled(AppBar)`
     display: none !important;
   }
 `
-const Header = () => {
+export const Header =observer( () => {
   const store: IStore = useContext(storeContext)
   const { session } = store
   // console.log({ session })
@@ -33,10 +33,12 @@ const Header = () => {
   return (
     <ErrorBoundary>
       <StyledAppBar position="static">
-        <Toolbar>{session ? <Authenticated /> : <Anonymus />}</Toolbar>
+        <Toolbar>
+          {session ? <HeaderAuthenticated /> : <HeaderAnonymus />}
+        </Toolbar>
       </StyledAppBar>
     </ErrorBoundary>
   )
-}
+})
 
-export default observer(Header)
+export default observer(Header

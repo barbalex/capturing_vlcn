@@ -8,7 +8,7 @@ import styled from '@emotion/styled'
 import { useResizeDetector } from 'react-resize-detector'
 import { Link, useLocation } from 'react-router-dom'
 
-import ErrorBoundary from '../shared/ErrorBoundary'
+import { ErrorBoundary } from '../shared/ErrorBoundary'
 import constants from '../../utils/constants'
 
 const SiteTitle = styled(Button)`
@@ -39,7 +39,7 @@ const NavButton = styled(Button)`
   }
 `
 
-const HeaderAnonymus = () => {
+export const HeaderAnonymus = () => {
   const { pathname } = useLocation()
   const { width, ref: resizeRef } = useResizeDetector()
   const mobile = width && width < constants?.tree?.minimalWindowWidth
@@ -99,4 +99,3 @@ const HeaderAnonymus = () => {
   )
 }
 
-export default HeaderAnonymus

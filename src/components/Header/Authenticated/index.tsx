@@ -10,10 +10,10 @@ import { useResizeDetector } from 'react-resize-detector'
 import { Link, useLocation } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
-import ErrorBoundary from '../../shared/ErrorBoundary'
+import { ErrorBoundary } from '../../shared/ErrorBoundary'
 import constants from '../../../utils/constants'
 import storeContext from '../../../storeContext'
-import ServerConnected from './ServerConnected'
+import { ServerConnected } from './ServerConnected'
 import { IStore } from '../../../store'
 
 const SiteTitle = styled(Button)`
@@ -69,7 +69,7 @@ const UserIcon = styled(MdPerson)`
 //   background-color: rgba(0, 0, 0, 0);
 // `
 
-const HeaderAuthenticated = () => {
+export const HeaderAuthenticated = observer(() => {
   const store: IStore = useContext(storeContext)
   const { showTree, showForm, showMap, setShowTree, setShowForm, setShowMap } =
     store
@@ -185,6 +185,4 @@ const HeaderAuthenticated = () => {
       </AppBar>
     </ErrorBoundary>
   )
-}
-
-export default observer(HeaderAuthenticated)
+})

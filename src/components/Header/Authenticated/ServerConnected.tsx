@@ -18,7 +18,7 @@ const StyledBadge = styled(Badge)`
   }
 `
 
-const ServerConnected = () => {
+export const ServerConnected = observer(() => {
   const store: IStore = useContext(storeContext)
   // serverConnected not so helpful
   const { online } = store
@@ -55,6 +55,4 @@ const ServerConnected = () => {
       </StyledBadge>
     </IconButton>
   )
-}
-
-export default observer(ServerConnected)
+})

@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 
 import StoreContext from '../../storeContext'
-import ErrorBoundary from './ErrorBoundary'
+import { ErrorBoundary } from './ErrorBoundary'
 import { dexie, Row } from '../../dexieClient'
 import { IStore } from '../../store'
 

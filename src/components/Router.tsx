@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 
-import Home from '../routes/Home'
+import { Home } from '../routes/Home'
 // import Docs from '../routes/Docs'
 // import User from '../routes/User'
 // import ImageLayerTypes from './Docs/ImageLayerTypes'
@@ -22,7 +22,7 @@ import Home from '../routes/Home'
 // import FieldComponent from './Field'
 // import RowsComponent from './Rows'
 // import RowComponent from './Row'
-import Layout from './Layout'
+import { Layout } from './Layout'
 // import QueuedUpdates from '../routes/QueuedUpdates'
 
 const RouterComponent = (): React.FC => (

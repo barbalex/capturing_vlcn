@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import Typography from '@mui/material/Typography'
 import MaterialCard from '@mui/material/Card'
 
-import ErrorBoundary from '../components/shared/ErrorBoundary'
+import { ErrorBoundary } from '../components/shared/ErrorBoundary'
 import constants from '../utils/constants'
 
 const OuterContainer = styled.div`
@@ -123,7 +123,7 @@ const Img = styled.img`
   filter: opacity(0.3);
 `
 
-const Home = (): React.FC => {
+export const Home = observer((): React.FC => {
   useEffect(() => {
     document.title = 'Erfassen: Home'
   }, [])
@@ -228,6 +228,4 @@ const Home = (): React.FC => {
       </OuterContainer>
     </ErrorBoundary>
   )
-}
-
-export default observer(Home)
+})

@@ -28,7 +28,7 @@ import AutoLinkPlugin from './AutoLinkPlugin'
 import CodeHighlightPlugin from './CodeHighlightPlugin'
 import theme from './theme'
 import './styles.css'
-import ErrorBoundary from '../ErrorBoundary'
+import { ErrorBoundary } from '../ErrorBoundary'
 
 const StyledFormControl = styled(FormControl)`
   padding-bottom: 19px !important;
