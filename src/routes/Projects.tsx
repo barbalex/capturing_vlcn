@@ -46,11 +46,11 @@ const StyledMotionDiv = styled(motion.div)`
   height: 100%;
 `
 
-export const resizerWidth = 5
+const resizerWidth = constants.resizerWidth
 
 const PageLayout = ({ children }): PropsWithChildren => children
 
-const transition1 = { duration: 0.05 }
+// const transition1 = { duration: 0.05 }
 const transition2 = { duration: 0.4 }
 const initial = {
   next: { x: '100%', opacity: 1 },
@@ -194,39 +194,38 @@ export const ProjectsPage = observer((): React.FC => {
       ? 'next'
       : 'previous'
 
-  return 'projects'
-  // return (
-  //   <Container ref={containerEl}>
-  //     <StyledSplitPane
-  //       split="vertical"
-  //       size={treePaneSize}
-  //       maxSize={-10}
-  //       resizerStyle={{ width: treeResizerWidth }}
-  //     >
-  //       {showTree ? <Tree /> : <></>}
-  //       <StyledSplitPane
-  //         split="vertical"
-  //         size={formPaneSize}
-  //         maxSize={-10}
-  //         resizerStyle={{ width: formResizerWidth }}
-  //       >
-  //         <AnimatePresence initial={false}>
-  //           {showForm ? (
-  //             <PageLayout key={activeNodeArray.slice().join('/')}>
-  //               <StyledMotionDiv
-  //                 initial={initial[navDirection]}
-  //                 animate={animate[navDirection]}
-  //               >
-  //                 <Outlet />
-  //               </StyledMotionDiv>
-  //             </PageLayout>
-  //           ) : (
-  //             <></>
-  //           )}
-  //         </AnimatePresence>
-  //         {mapInitiated ? <MapComponent /> : <></>}
-  //       </StyledSplitPane>
-  //     </StyledSplitPane>
-  //   </Container>
-  // )
+  return (
+    <Container ref={containerEl}>
+      <StyledSplitPane
+        split="vertical"
+        size={treePaneSize}
+        maxSize={-10}
+        resizerStyle={{ width: treeResizerWidth }}
+      >
+        {showTree ? <Tree /> : <></>}
+        <StyledSplitPane
+          split="vertical"
+          size={formPaneSize}
+          maxSize={-10}
+          resizerStyle={{ width: formResizerWidth }}
+        >
+          <AnimatePresence initial={false}>
+            {showForm ? (
+              <PageLayout key={activeNodeArray.slice().join('/')}>
+                <StyledMotionDiv
+                  initial={initial[navDirection]}
+                  animate={animate[navDirection]}
+                >
+                  <Outlet />
+                </StyledMotionDiv>
+              </PageLayout>
+            ) : (
+              <></>
+            )}
+          </AnimatePresence>
+          {mapInitiated ? <MapComponent /> : <></>}
+        </StyledSplitPane>
+      </StyledSplitPane>
+    </Container>
+  )
 })

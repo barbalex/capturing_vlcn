@@ -15,6 +15,7 @@ const constants = {
     width: 420,
     minimalWindowWidth: 1000,
   },
+  resizerWidth: 5,
 }
 
 export default constants
