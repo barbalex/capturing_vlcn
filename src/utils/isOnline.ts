@@ -18,7 +18,7 @@ const isOnline = async (token: string) => {
     // },
   }
   let res
-  console.log('isOnline, endpoints.checkHealth:', endpoints.checkHealth)
+  // console.log('isOnline, endpoints.checkHealth:', endpoints.checkHealth)
   try {
     res = await axios.head(endpoints.checkHealth.href, config)
   } catch (error) {
@@ -26,7 +26,7 @@ const isOnline = async (token: string) => {
     console.error('isOnline, error:', error)
     return false
   }
-  console.log('isOnline, res:', res)
+  // console.log('isOnline, res:', res)
   if (res.status === 200) return true
   return false
 }

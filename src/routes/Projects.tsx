@@ -6,10 +6,10 @@ import { Outlet } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import StoreContext from '../storeContext'
-import Login from '../components/Login'
+import { Login } from '../components/Login'
 import constants from '../utils/constants'
-import Tree from '../components/Tree'
-import MapComponent from '../components/Map'
+// import Tree from '../components/Tree'
+// import MapComponent from '../components/Map'
 import { IStore } from '../store'
 
 export const StyledSplitPane = styled(SplitPane)`
@@ -105,7 +105,7 @@ const animate = {
  * - animate changeds of columns
  */
 
-const ProjectsPage = (): React.FC => {
+export const ProjectsPage = observer((): React.FC => {
   const store: IStore = useContext(StoreContext)
   const {
     showTree,
@@ -126,8 +126,6 @@ const ProjectsPage = (): React.FC => {
   useEffect(() => {
     document.title = 'Erfassen: Projekte'
   }, [])
-
-  // console.log('Projects, session:', { session, sessionCounter })
 
   if (!session || sessionCounter === 0) return <Login />
 
@@ -196,40 +194,39 @@ const ProjectsPage = (): React.FC => {
       ? 'next'
       : 'previous'
 
-  return (
-    <Container ref={containerEl}>
-      <StyledSplitPane
-        split="vertical"
-        size={treePaneSize}
-        maxSize={-10}
-        resizerStyle={{ width: treeResizerWidth }}
-      >
-        {showTree ? <Tree /> : <></>}
-        <StyledSplitPane
-          split="vertical"
-          size={formPaneSize}
-          maxSize={-10}
-          resizerStyle={{ width: formResizerWidth }}
-        >
-          <AnimatePresence initial={false}>
-            {showForm ? (
-              <PageLayout key={activeNodeArray.slice().join('/')}>
-                <StyledMotionDiv
-                  initial={initial[navDirection]}
-                  animate={animate[navDirection]}
-                >
-                  <Outlet />
-                </StyledMotionDiv>
-              </PageLayout>
-            ) : (
-              <></>
-            )}
-          </AnimatePresence>
-          {mapInitiated ? <MapComponent /> : <></>}
-        </StyledSplitPane>
-      </StyledSplitPane>
-    </Container>
-  )
-}
-
-export default observer(ProjectsPage)
+  return 'projects'
+  // return (
+  //   <Container ref={containerEl}>
+  //     <StyledSplitPane
+  //       split="vertical"
+  //       size={treePaneSize}
+  //       maxSize={-10}
+  //       resizerStyle={{ width: treeResizerWidth }}
+  //     >
+  //       {showTree ? <Tree /> : <></>}
+  //       <StyledSplitPane
+  //         split="vertical"
+  //         size={formPaneSize}
+  //         maxSize={-10}
+  //         resizerStyle={{ width: formResizerWidth }}
+  //       >
+  //         <AnimatePresence initial={false}>
+  //           {showForm ? (
+  //             <PageLayout key={activeNodeArray.slice().join('/')}>
+  //               <StyledMotionDiv
+  //                 initial={initial[navDirection]}
+  //                 animate={animate[navDirection]}
+  //               >
+  //                 <Outlet />
+  //               </StyledMotionDiv>
+  //             </PageLayout>
+  //           ) : (
+  //             <></>
+  //           )}
+  //         </AnimatePresence>
+  //         {mapInitiated ? <MapComponent /> : <></>}
+  //       </StyledSplitPane>
+  //     </StyledSplitPane>
+  //   </Container>
+  // )
+})
