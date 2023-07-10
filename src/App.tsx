@@ -4,9 +4,6 @@ import { BrowserRouter } from 'react-router-dom'
 import { onSnapshot } from 'mobx-state-tree'
 import isEqual from 'lodash/isEqual'
 import { useCachedState, useQuery } from '@vlcn.io/react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import vlcnLogo from './assets/vlcn.png'
 import './App.css'
 import randomWords from './support/randomWords.js'
 import { DBAsync } from '@vlcn.io/xplat-api'
@@ -119,17 +116,6 @@ function App({ dbid }: { dbid: string }) {
             <ColumnController />
             <ApiDetector />
             <RouterComponent />
-            <div>
-              <a href="https://vitejs.dev" target="_blank">
-                <img src={viteLogo} className="logo" alt="Vite logo" />
-              </a>
-              <a href="https://react.dev" target="_blank">
-                <img src={reactLogo} className="logo react" alt="React logo" />
-              </a>
-              <a href="https://vlcn.io" target="_blank">
-                <img src={vlcnLogo} className="logo vlcn" alt="Vulcan logo" />
-              </a>
-            </div>
             <h1>Vite + React + Vulcan</h1>
             <div className="card">
               <button onClick={addData} style={{ marginRight: '1em' }}>
