@@ -90,7 +90,7 @@ const ProjectsPage = () => {
     window.innerWidth ||
     document.documentElement.clientWidth ||
     document.body.clientWidth
-  const resizerWidth = 5
+  const resizerWidth = constants.resizerWidth
   // let treePaneSize = '33%'
   let treePaneSize = (width - (tabsLength - 1) * resizerWidth) / 3
   let treeResizerWidth = resizerWidth

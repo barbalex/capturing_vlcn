@@ -6,7 +6,7 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 
-import { StyledSplitPane, resizerWidth } from './Projects'
+import { StyledSplitPane } from './Projects'
 import constants from '../utils/constants'
 
 const StyledList = styled(List)`
@@ -40,7 +40,7 @@ export const Docs = (): React.FC => {
       split="vertical"
       size="min(33%, 250px)"
       maxSize={-10}
-      resizerStyle={{ width: resizerWidth }}
+      resizerStyle={{ width: constants.resizerWidth }}
     >
       <nav aria-label="docs">
         <StyledList>
@@ -85,4 +85,3 @@ export const Docs = (): React.FC => {
     </StyledSplitPane>
   )
 }
-
