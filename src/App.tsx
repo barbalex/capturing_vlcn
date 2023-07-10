@@ -90,8 +90,8 @@ export const App = () => {
             <NavigationSyncController />
             <ColumnController />
             <ApiDetector />
-            {/* <RouterComponent /> */}
-            <ExampleEditor />
+            <RouterComponent />
+            {/* <ExampleEditor /> */}
           </MobxProvider>
         </ThemeProvider>
       </StyledEngineProvider>

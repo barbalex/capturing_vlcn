@@ -5,6 +5,8 @@ import { FaPlus } from 'react-icons/fa'
 import IconButton from '@mui/material/IconButton'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useNavigate } from 'react-router-dom'
+import { useDB } from '@vlcn.io/react'
+import { useQuery } from '@vlcn.io/react'
 
 import storeContext from '../../storeContext'
 import Row from './Row'
@@ -15,6 +17,7 @@ import insertProject from '../../utils/insertProject'
 import sortProjectsByLabelName from '../../utils/sortProjectsByLabelName'
 import FilterNumbers from '../shared/FilterNumbers'
 import { IStore } from '../../store'
+import { Project } from '../../utils/models'
 
 const Container = styled.div`
   height: 100%;
@@ -57,6 +60,14 @@ export const Projects = observer(() => {
   const navigate = useNavigate()
   const store: IStore = useContext(storeContext)
   const { setProjectEditing } = store
+
+  const dbid: string = localStorage.getItem('remoteDbid')
+  const ctx = useDB(dbid)
+
+  const projects = useQuery<Project>(
+    ctx,
+    'SELECT * FROM projects ORDER BY id DESC',
+  ).data
 
   const data = useLiveQuery(async () => {
     const [projects, account, filteredCount, totalCount] = await Promise.all([
