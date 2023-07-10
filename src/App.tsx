@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { onSnapshot } from 'mobx-state-tree'
 import isEqual from 'lodash/isEqual'
 import { useCachedState, useQuery } from '@vlcn.io/react'
-import './App.css'
+
 import randomWords from './support/randomWords.js'
 import { DBAsync } from '@vlcn.io/xplat-api'
 import { useDB } from '@vlcn.io/react'
