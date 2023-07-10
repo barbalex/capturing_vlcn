@@ -105,6 +105,9 @@ function App({ dbid }: { dbid: string }) {
 
   if (!store) return null
 
+  // TODO: enable resetting password
+  // used to use ResetPasswordController that detected type = 'recovery' in search params
+
   return (
     <BrowserRouter>
       <StyledEngineProvider injectFirst>
