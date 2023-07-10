@@ -11,6 +11,11 @@ import schema from './schemas/main.mjs'
 import { endpoints } from './SyncEndpoints.ts'
 import { DBProvider } from '@vlcn.io/react'
 
+import '@fontsource/roboto/300.css'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
+import '@fontsource/roboto/700.css'
+
 registerLocale('de', de)
 setDefaultLocale('de')
 
