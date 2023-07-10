@@ -107,55 +107,61 @@ function App({ dbid }: { dbid: string }) {
     <BrowserRouter>
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={materialTheme}>
-          <div>
-            <a href="https://vitejs.dev" target="_blank">
-              <img src={viteLogo} className="logo" alt="Vite logo" />
-            </a>
-            <a href="https://react.dev" target="_blank">
-              <img src={reactLogo} className="logo react" alt="React logo" />
-            </a>
-            <a href="https://vlcn.io" target="_blank">
-              <img src={vlcnLogo} className="logo vlcn" alt="Vulcan logo" />
-            </a>
-          </div>
-          <h1>Vite + React + Vulcan</h1>
-          <div className="card">
-            <button onClick={addData} style={{ marginRight: '1em' }}>
-              Add Data
-            </button>
-            <button onClick={dropData}>Drop Data</button>
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((row) => (
-                  <tr key={row.id}>
-                    <td>{row.id}</td>
-                    <td>
-                      <EditableItem db={ctx.db} id={row.id} value={row.name} />
-                    </td>
+          <MobxProvider value={store}>
+            <div>
+              <a href="https://vitejs.dev" target="_blank">
+                <img src={viteLogo} className="logo" alt="Vite logo" />
+              </a>
+              <a href="https://react.dev" target="_blank">
+                <img src={reactLogo} className="logo react" alt="React logo" />
+              </a>
+              <a href="https://vlcn.io" target="_blank">
+                <img src={vlcnLogo} className="logo vlcn" alt="Vulcan logo" />
+              </a>
+            </div>
+            <h1>Vite + React + Vulcan</h1>
+            <div className="card">
+              <button onClick={addData} style={{ marginRight: '1em' }}>
+                Add Data
+              </button>
+              <button onClick={dropData}>Drop Data</button>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-            <p>
-              Edit <code>src/App.tsx</code> and save to test HMR
+                </thead>
+                <tbody>
+                  {data.map((row) => (
+                    <tr key={row.id}>
+                      <td>{row.id}</td>
+                      <td>
+                        <EditableItem
+                          db={ctx.db}
+                          id={row.id}
+                          value={row.name}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p>
+                Edit <code>src/App.tsx</code> and save to test HMR
+              </p>
+              <p>
+                Open another browser and navigate to{' '}
+                <a href={window.location.href} target="_blank">
+                  this window's url
+                </a>{' '}
+                to test sync.
+              </p>
+            </div>
+            <p className="read-the-docs">
+              Click on the Vite, React and Vulcan logos to learn more
             </p>
-            <p>
-              Open another browser and navigate to{' '}
-              <a href={window.location.href} target="_blank">
-                this window's url
-              </a>{' '}
-              to test sync.
-            </p>
-          </div>
-          <p className="read-the-docs">
-            Click on the Vite, React and Vulcan logos to learn more
-          </p>
+          </MobxProvider>
         </ThemeProvider>
       </StyledEngineProvider>
     </BrowserRouter>
