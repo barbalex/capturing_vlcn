@@ -17,7 +17,8 @@ import { MobxStore, IStore } from './store'
 import materialTheme from './utils/materialTheme'
 import { Provider as MobxProvider } from './storeContext'
 import { dexie } from './dexieClient'
-import NavigationSyncController from './components/NavigationSyncController'
+import { NavigationSyncController } from './components/NavigationSyncController'
+import { ColumnController } from './components/ColumnController'
 
 // TODO: auth via firebase?
 
@@ -110,6 +111,7 @@ function App({ dbid }: { dbid: string }) {
         <ThemeProvider theme={materialTheme}>
           <MobxProvider value={store}>
             <NavigationSyncController />
+            <ColumnController />
             <div>
               <a href="https://vitejs.dev" target="_blank">
                 <img src={viteLogo} className="logo" alt="Vite logo" />
