@@ -19,6 +19,7 @@ import { Provider as MobxProvider } from './storeContext'
 import { dexie } from './dexieClient'
 import { NavigationSyncController } from './components/NavigationSyncController'
 import { ColumnController } from './components/ColumnController'
+import { ApiDetector } from './components/ApiDetector'
 
 // TODO: auth via firebase?
 
@@ -115,6 +116,7 @@ function App({ dbid }: { dbid: string }) {
           <MobxProvider value={store}>
             <NavigationSyncController />
             <ColumnController />
+            <ApiDetector />
             <div>
               <a href="https://vitejs.dev" target="_blank">
                 <img src={viteLogo} className="logo" alt="Vite logo" />

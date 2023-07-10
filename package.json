@@ -33,6 +33,7 @@
     "react-dom": "18.2.0",
     "react-resize-detector": "^9.1.0",
     "react-router-dom": "6.14.1",
+    "redaxios": "^0.5.1",
     "uuidv7": "0.5.3"
   },
   "devDependencies": {
