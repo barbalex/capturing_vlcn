@@ -16,11 +16,9 @@ interface Props {
   message?: string
 }
 
-const SpinnerComponent = ({ message }: Props): React.FC => (
+export const Spinner = ({ message }: Props): React.FC => (
   <SpinnerContainer>
     <CircularProgress />
     {!!message && <SpinnerText>{message}</SpinnerText>}
   </SpinnerContainer>
 )
-
-export default SpinnerComponent

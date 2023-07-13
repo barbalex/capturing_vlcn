@@ -51,7 +51,7 @@ interface Props {
   onBlur: () => void
 }
 
-const RadioButtonGroup = ({
+export const JesNo = ({
   value: valuePassed,
   label,
   name,
@@ -146,5 +146,3 @@ const RadioButtonGroup = ({
     </Container>
   )
 }
-
-export default RadioButtonGroup

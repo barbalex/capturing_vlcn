@@ -5,7 +5,7 @@ import FilterTitle from '../../shared/FilterTitle'
 import FormTitle from './FormTitle'
 import { dexie } from '../../../dexieClient'
 
-const ProjectFormTitleChooser = () => {
+export const ProjectFormTitleChooser = observer(() => {
   const showFilter = false // TODO:
 
   const data = useLiveQuery(async () => {
@@ -31,6 +31,4 @@ const ProjectFormTitleChooser = () => {
   }
 
   return <FormTitle totalCount={totalCount} filteredCount={filteredCount} />
-}
-
-export default observer(ProjectFormTitleChooser)
+})

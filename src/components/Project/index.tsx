@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 
-import ErrorBoundary from '../shared/ErrorBoundary'
-import FormTitle from './FormTitle'
-import Form from './Form'
+import { ErrorBoundary } from '../shared/ErrorBoundary'
+import { ProjectFormTitleChooser as FormTitle } from './FormTitle'
+import { Form } from './Form'
 
 const Container = styled.div`
   height: 100%;
@@ -11,7 +11,7 @@ const Container = styled.div`
   background-color: ${(props) => (props.showfilter ? '#fff3e0' : 'unset')};
 `
 
-const ProjectComponent = ({ filter: showFilter }) => {
+export const Project = ({ filter: showFilter }) => {
   const filter = 'TODO: was in store'
 
   if (!showFilter && filter.show) return null
@@ -19,11 +19,10 @@ const ProjectComponent = ({ filter: showFilter }) => {
   return (
     <ErrorBoundary>
       <Container showfilter={showFilter}>
-        <FormTitle showFilter={showFilter} />
+        {/* <FormTitle showFilter={showFilter} /> */}
+        'TODO: FormTitle'
         <Form showFilter={showFilter} />
       </Container>
     </ErrorBoundary>
   )
 }
-
-export default ProjectComponent

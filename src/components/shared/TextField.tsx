@@ -35,80 +35,85 @@ type Props = {
   hideLabel?: boolean
 }
 
-const MyTextField = ({
-  value,
-  label,
-  labelWeight = 400,
-  name,
-  type = 'text',
-  multiLine = false,
-  disabled = false,
-  hintText = '',
-  helperText = '',
-  error,
-  onBlur,
-  schrinkLabel = true,
-  hideLabel = false,
-}: Props) => {
-  const [stateValue, setStateValue] = useState<string | number>(
-    value || value === 0 ? value : '',
-  )
-  useEffect(() => {
-    setStateValue(value || value === 0 ? value : '')
-  }, [value])
-  const onChange = useCallback((event) => setStateValue(event.target.value), [])
+export const TextField = observer(
+  ({
+    value,
+    label,
+    labelWeight = 400,
+    name,
+    type = 'text',
+    multiLine = false,
+    disabled = false,
+    hintText = '',
+    helperText = '',
+    error,
+    onBlur,
+    schrinkLabel = true,
+    hideLabel = false,
+  }: Props) => {
+    const [stateValue, setStateValue] = useState<string | number>(
+      value || value === 0 ? value : '',
+    )
+    useEffect(() => {
+      setStateValue(value || value === 0 ? value : '')
+    }, [value])
+    const onChange = useCallback(
+      (event) => setStateValue(event.target.value),
+      [],
+    )
 
-  const onKeyPress = useCallback(
-    (event: React.KeyboardEvent) => {
-      if (event.key === 'Enter') {
-        onBlur(event)
-      }
-    },
-    [onBlur],
-  )
+    const onKeyPress = useCallback(
+      (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          onBlur(event)
+        }
+      },
+      [onBlur],
+    )
 
-  // once schrink is set, need to manually control ist
-  // schrink if value exists or schrinkLabel was passed
-  const schrink = schrinkLabel || !!value || value === 0
+    // once schrink is set, need to manually control ist
+    // schrink if value exists or schrinkLabel was passed
+    const schrink = schrinkLabel || !!value || value === 0
 
-  // console.log('TextField', { label, multiLine })
+    // console.log('TextField', { label, multiLine })
 
-  return (
-    <StyledFormControl
-      fullWidth
-      disabled={disabled}
-      error={!!error}
-      aria-describedby={`${label}ErrorText`}
-      variant="standard"
-    >
-      {!hideLabel && (
-        <StyledInputLabel
-          htmlFor={label}
-          shrink={schrink}
-          data-weight={labelWeight}
-        >
-          {label}
-        </StyledInputLabel>
-      )}
-      <Input
-        id={label}
-        name={name}
-        value={stateValue}
-        type={type}
-        multiline={multiLine}
-        onChange={onChange}
-        onBlur={onBlur}
-        onKeyPress={onKeyPress}
-        placeholder={hintText}
-      />
-      {!!error && (
-        <FormHelperText id={`${label}ErrorText`}>{error}</FormHelperText>
-      )}
-      {!!helperText && (
-        <FormHelperText id={`${label}HelperText`}>{helperText}</FormHelperText>
-      )}
-    </StyledFormControl>
-  )
-}
-
-export default observer(MyTextField)
+    return (
+      <StyledFormControl
+        fullWidth
+        disabled={disabled}
+        error={!!error}
+        aria-describedby={`${label}ErrorText`}
+        variant="standard"
+      >
+        {!hideLabel && (
+          <StyledInputLabel
+            htmlFor={label}
+            shrink={schrink}
+            data-weight={labelWeight}
+          >
+            {label}
+          </StyledInputLabel>
+        )}
+        <Input
+          id={label}
+          name={name}
+          value={stateValue}
+          type={type}
+          multiline={multiLine}
+          onChange={onChange}
+          onBlur={onBlur}
+          onKeyPress={onKeyPress}
+          placeholder={hintText}
+        />
+        {!!error && (
+          <FormHelperText id={`${label}ErrorText`}>{error}</FormHelperText>
+        )}
+        {!!helperText && (
+          <FormHelperText id={`${label}HelperText`}>
+            {helperText}
+          </FormHelperText>
+        )}
+      </StyledFormControl>
+    )
+  },
+)

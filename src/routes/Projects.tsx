@@ -115,8 +115,8 @@ export const Projects = observer((): React.FC => {
     horizontalNavIds,
     activeNodeArray,
     previousActiveNodeArray,
-    session,
-    sessionCounter,
+    // session,
+    // sessionCounter,
   } = store
 
   // console.log('Projects, mapInitiated:', mapInitiated)

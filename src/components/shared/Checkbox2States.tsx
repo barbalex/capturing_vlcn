@@ -31,7 +31,7 @@ type Props = {
   onBlur: () => void
 }
 
-const Checkbox2States = ({
+export const Checkbox2States = ({
   label,
   name,
   value: valuePassed,
@@ -72,5 +72,3 @@ const Checkbox2States = ({
     </StyledFormControl>
   )
 }
-
-export default Checkbox2States

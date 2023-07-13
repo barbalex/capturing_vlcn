@@ -11,7 +11,7 @@ import { DataHistory } from './Docs/DataHistory'
 import { Projects } from '../routes/Projects'
 import { FourOhFour } from '../routes/404'
 import { Projects as ProjectsComponent } from './Projects'
-// import ProjectComponent from './Project'
+import { Project as ProjectComponent } from './Project'
 // import TablesComponent from './Tables'
 // import TableComponent from './Table'
 // import TileLayersComponent from './TileLayers'
@@ -32,8 +32,8 @@ export const RouterComponent = (): React.FC => (
       <Route path="user" element={<User />} />
       <Route path="projects/*" element={<Projects />}>
         <Route index element={<ProjectsComponent />} />
-        {/* <Route path=":projectId" element={<ProjectComponent />} />
-        <Route path=":projectId/tables" element={<TablesComponent />} />
+        <Route path=":projectId" element={<ProjectComponent />} />
+        {/* <Route path=":projectId/tables" element={<TablesComponent />} />
         <Route path=":projectId/tables/:tableId" element={<TableComponent />} />
         <Route
           path=":projectId/tile-layers"

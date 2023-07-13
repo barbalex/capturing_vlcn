@@ -3,16 +3,17 @@ import { observer } from 'mobx-react-lite'
 import styled from '@emotion/styled'
 import isEqual from 'lodash/isEqual'
 import { useParams } from 'react-router-dom'
-import { useLiveQuery } from 'dexie-react-hooks'
+import { useQuery } from '@vlcn.io/react'
+import { useDB } from '@vlcn.io/react'
 
 import StoreContext from '../../storeContext'
-import Checkbox2States from '../shared/Checkbox2States'
-import JesNo from '../shared/JesNo'
-import ErrorBoundary from '../shared/ErrorBoundary'
-import Spinner from '../shared/Spinner'
-import { dexie, IProject } from '../../dexieClient'
-import TextField from '../shared/TextField'
-import ProjectUsers from './ProjectUsers'
+import { Checkbox2States } from '../shared/Checkbox2States'
+import { JesNo } from '../shared/JesNo'
+import { ErrorBoundary } from '../shared/ErrorBoundary'
+import { Spinner } from '../shared/Spinner'
+import { Project } from '../../utils/models'
+import { TextField } from '../shared/TextField'
+// import ProjectUsers from './ProjectUsers'
 import { IStore } from '../../store'
 
 const FormContainer = styled.div`
@@ -27,10 +28,13 @@ type ProjectFormProps = {
   showFilter: (boolean) => void
 }
 
-const ProjectForm = ({ showFilter }: ProjectFormProps) => {
+export const Form = observer(({ showFilter }: ProjectFormProps) => {
   const { projectId } = useParams()
   const store: IStore = useContext(StoreContext)
   const { filter, errors, rebuildTree, session } = store
+
+  const dbid: string = localStorage.getItem('remoteDbid')
+  const ctx = useDB(dbid)
 
   // console.log('ProjectForm rendering')
 
@@ -44,15 +48,17 @@ const ProjectForm = ({ showFilter }: ProjectFormProps) => {
     unsetError('project')
   }, [projectId, unsetError])
 
-  const row: Row = useLiveQuery(
-    async () => await dexie.projects.get(projectId),
+  const rows: Row[] = useQuery<Project>(
+    ctx,
+    'SELECT * FROM projects where id = ?',
     [projectId],
-  )
+  ).data
+  const row = rows[0]
 
   // console.log('ProjectForm rendering row:', row)
 
-  const originalRow = useRef<IProject>()
-  const rowState = useRef<IProject>()
+  const originalRow = useRef<Project>()
+  const rowState = useRef<Project>()
   useEffect(() => {
     rowState.current = row
     if (!originalRow.current && row) {
@@ -100,11 +106,14 @@ const ProjectForm = ({ showFilter }: ProjectFormProps) => {
 
       // update rowState
       rowState.current = { ...row, ...{ [field]: newValue } }
-      // update dexie
-      dexie.projects.update(row.id, { [field]: newValue })
+      // update SQLite
+      ctx.db.exec(`update projects set ${field} = ? where id = ?;`, [
+        newValue,
+        row.id,
+      ])
       if (['name', 'label'].includes(field)) rebuildTree()
     },
-    [filter, rebuildTree, row, showFilter],
+    [ctx.db, filter, rebuildTree, row, showFilter],
   )
 
   // const showDeleted = filter?.project?.deleted !== false || row?.deleted
@@ -191,10 +200,9 @@ const ProjectForm = ({ showFilter }: ProjectFormProps) => {
             error={errors?.project?.account_id}
           />
         </FieldsContainer>
-        <ProjectUsers key={`${row.id}ProjectUsers`} />
+        {/* <ProjectUsers key={`${row.id}ProjectUsers`} /> */}
+        'TODO: add project users'
       </FormContainer>
     </ErrorBoundary>
   )
-}
-
-export default observer(ProjectForm)
+})
