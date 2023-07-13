@@ -12,32 +12,32 @@ dependencies:
     specifier: 11.11.0
     version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.14)(react@18.2.0)
   '@fontsource/roboto':
-    specifier: ^5.0.5
+    specifier: 5.0.5
     version: 5.0.5
   '@mui/material':
-    specifier: 5.13.7
-    version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 5.14.0
+    version: 5.14.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
   '@vlcn.io/crsqlite-wasm':
-    specifier: 0.14.0-next.0
-    version: 0.14.0-next.0
+    specifier: 0.14.0
+    version: 0.14.0
   '@vlcn.io/direct-connect-browser':
-    specifier: 0.4.0-next.1
-    version: 0.4.0-next.1
+    specifier: 0.4.0
+    version: 0.4.0
   '@vlcn.io/direct-connect-common':
-    specifier: 0.5.0-next.1
-    version: 0.5.0-next.1
+    specifier: 0.5.0
+    version: 0.5.0
   '@vlcn.io/direct-connect-nodejs':
-    specifier: 0.5.0-next.6
-    version: 0.5.0-next.6
+    specifier: 0.5.0
+    version: 0.5.0
   '@vlcn.io/react':
-    specifier: 2.4.0-next.1
-    version: 2.4.0-next.1(react@18.2.0)
+    specifier: 2.4.0
+    version: 2.4.0(react@18.2.0)
   '@vlcn.io/rx-tbl':
-    specifier: 0.13.0-next.0
-    version: 0.13.0-next.0
+    specifier: 0.13.0
+    version: 0.13.0
   '@vlcn.io/xplat-api':
-    specifier: 0.13.0-next.0
-    version: 0.13.0-next.0
+    specifier: 0.13.0
+    version: 0.13.0
   cors:
     specifier: 2.8.5
     version: 2.8.5
@@ -51,53 +51,53 @@ dependencies:
     specifier: 4.18.2
     version: 4.18.2
   framer-motion:
-    specifier: ^10.12.18
+    specifier: 10.12.18
     version: 10.12.18(react-dom@18.2.0)(react@18.2.0)
   lodash:
     specifier: 4.17.21
     version: 4.17.21
   mobx:
-    specifier: 6.9.0
-    version: 6.9.0
+    specifier: 6.9.1
+    version: 6.9.1
   mobx-react-lite:
-    specifier: 3.4.3
-    version: 3.4.3(mobx@6.9.0)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 4.0.3
+    version: 4.0.3(mobx@6.9.1)(react-dom@18.2.0)(react@18.2.0)
   mobx-state-tree:
     specifier: 5.1.8
-    version: 5.1.8(mobx@6.9.0)
+    version: 5.1.8(mobx@6.9.1)
   react:
     specifier: 18.2.0
     version: 18.2.0
   react-datepicker:
-    specifier: 4.15.0
-    version: 4.15.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: 4.16.0
+    version: 4.16.0(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   react-error-boundary:
-    specifier: ^4.0.10
+    specifier: 4.0.10
     version: 4.0.10(react@18.2.0)
   react-icons:
-    specifier: ^4.10.1
+    specifier: 4.10.1
     version: 4.10.1(react@18.2.0)
   react-resize-detector:
-    specifier: ^9.1.0
+    specifier: 9.1.0
     version: 9.1.0(react-dom@18.2.0)(react@18.2.0)
   react-router-dom:
     specifier: 6.14.1
     version: 6.14.1(react-dom@18.2.0)(react@18.2.0)
   react-split-pane:
-    specifier: ^0.1.92
+    specifier: 0.1.92
     version: 0.1.92(react-dom@18.2.0)(react@18.2.0)
   redaxios:
-    specifier: ^0.5.1
+    specifier: 0.5.1
     version: 0.5.1
   uuidv7:
     specifier: 0.5.3
     version: 0.5.3
   vite-plugin-svgr:
-    specifier: ^3.2.0
-    version: 3.2.0(rollup@2.79.1)(vite@4.4.2)
+    specifier: 3.2.0
+    version: 3.2.0(rollup@2.79.1)(vite@4.4.3)
 
 devDependencies:
   '@mui/types':
@@ -107,8 +107,8 @@ devDependencies:
     specifier: 18.2.14
     version: 18.2.14
   '@types/react-dom':
-    specifier: 18.2.6
-    version: 18.2.6
+    specifier: 18.2.7
+    version: 18.2.7
   '@typescript-eslint/eslint-plugin':
     specifier: 6.0.0
     version: 6.0.0(@typescript-eslint/parser@6.0.0)(eslint@8.44.0)(typescript@5.1.6)
@@ -117,7 +117,7 @@ devDependencies:
     version: 6.0.0(eslint@8.44.0)(typescript@5.1.6)
   '@vitejs/plugin-react':
     specifier: 4.0.3
-    version: 4.0.3(vite@4.4.2)
+    version: 4.0.3(vite@4.4.3)
   eslint:
     specifier: 8.44.0
     version: 8.44.0
@@ -131,11 +131,11 @@ devDependencies:
     specifier: 5.1.6
     version: 5.1.6
   vite:
-    specifier: 4.4.2
-    version: 4.4.2
+    specifier: 4.4.3
+    version: 4.4.3
   vite-plugin-pwa:
     specifier: 0.16.4
-    version: 0.16.4(vite@4.4.2)(workbox-build@7.0.0)(workbox-window@7.0.0)
+    version: 0.16.4(vite@4.4.3)(workbox-build@7.0.0)(workbox-window@7.0.0)
 
 packages:
 
@@ -1767,8 +1767,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /@mui/base@5.0.0-beta.6(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-jcHy6HwOX7KzRhRtL8nvIvUlxvLx2Fl6NMRCyUSQSvMTyfou9kndekz0H4HJaXvG1Y4WEifk23RYedOlrD1kEQ==}
+  /@mui/base@5.0.0-beta.7(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Pjbwm6gjiS96kOMF7E5fjEJsenc0tZBesrLQ4rrdi3eT/c/yhSWnPbCUkHSz8bnS0l3/VQ8bA+oERSGSV2PK6A==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0
@@ -1791,12 +1791,12 @@ packages:
       react-is: 18.2.0
     dev: false
 
-  /@mui/core-downloads-tracker@5.13.7:
-    resolution: {integrity: sha512-/suIo4WoeL/OyO3KUsFVpdOmKiSAr6NpWXmQ4WLSxwKrTiha1FJxM6vwAki5W/5kR9WnVLw5E8JC4oHHsutT8w==}
+  /@mui/core-downloads-tracker@5.14.0:
+    resolution: {integrity: sha512-SYBOVCatVDUf/lbrLGah09bHhX5WfUXg7kSskfLILr6SvKRni0NLp0aonxQ0SMALVVK3Qwa6cW4CdWuwS0gC1w==}
     dev: false
 
-  /@mui/material@5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-+n453jDDm88zZM3b5YK29nZ7gXY+s+rryH9ovDbhmfSkOlFtp+KSqbXy5cTaC/UlDqDM7sYYJGq8BmJov3v9Tg==}
+  /@mui/material@5.14.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-HP7CP71NhMkui2HUIEKl2/JfuHMuoarSUWAKlNw6s17bl/Num9rN61EM6uUzc2A2zHjj/00A66GnvDnmixEJEw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@emotion/react': ^11.5.0
@@ -1815,9 +1815,9 @@ packages:
       '@babel/runtime': 7.22.6
       '@emotion/react': 11.11.1(@types/react@18.2.14)(react@18.2.0)
       '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.14)(react@18.2.0)
-      '@mui/base': 5.0.0-beta.6(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@mui/core-downloads-tracker': 5.13.7
-      '@mui/system': 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.14)(react@18.2.0)
+      '@mui/base': 5.0.0-beta.7(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/core-downloads-tracker': 5.14.0
+      '@mui/system': 5.14.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.14)(react@18.2.0)
       '@mui/types': 7.2.4(@types/react@18.2.14)
       '@mui/utils': 5.13.7(react@18.2.0)
       '@types/react': 18.2.14
@@ -1870,8 +1870,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@mui/system@5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.14)(react@18.2.0):
-    resolution: {integrity: sha512-7R2KdI6vr8KtnauEfg9e9xQmPk6Gg/1vGNiALYyhSI+cYztxN6WmlSqGX4bjWn/Sygp1TUE1jhFEgs7MWruhkQ==}
+  /@mui/system@5.14.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.14)(react@18.2.0):
+    resolution: {integrity: sha512-0HZGkX8miJbiNw+rjlZ9l0Cfkz1bSqfSHQH0EH9J+nx0aAm5cBleg9piOlLdCNIWGgecCqsw4x62erGrGjjcJg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@emotion/react': ^11.5.0
@@ -2180,8 +2180,8 @@ packages:
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  /@types/react-dom@18.2.6:
-    resolution: {integrity: sha512-2et4PDvg6PVCyS7fuTc4gPoksV58bW0RwSxWKcPRcHZf0PRUGq03TKcD/rUHe3azfV6/5/biUBJw+HhCQjaP0A==}
+  /@types/react-dom@18.2.7:
+    resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
       '@types/react': 18.2.14
     dev: true
@@ -2356,7 +2356,7 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
-  /@vitejs/plugin-react@4.0.3(vite@4.4.2):
+  /@vitejs/plugin-react@4.0.3(vite@4.4.3):
     resolution: {integrity: sha512-pwXDog5nwwvSIzwrvYYmA2Ljcd/ZNlcsSG2Q9CNDBwnsd55UGAyr2doXtB5j+2uymRCnCfExlznzzSFbBRcoCg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -2366,74 +2366,74 @@ packages:
       '@babel/plugin-transform-react-jsx-self': 7.22.5(@babel/core@7.22.8)
       '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.8)
       react-refresh: 0.14.0
-      vite: 4.4.2
+      vite: 4.4.3
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@vlcn.io/crsqlite-wasm@0.14.0-next.0:
-    resolution: {integrity: sha512-UR5qcLpXNAYQ5r6OAuieENGW2KC3A2+ls9Jb57mWEj2QSQadzU9K7tu7z90ZOtFfRFPqkdbFmAkmKWKOQB3f1Q==}
+  /@vlcn.io/crsqlite-wasm@0.14.0:
+    resolution: {integrity: sha512-h7qEpECLZ27hrq1IwuoOJ9s4Dq+5pFjYa8Dpsn6n2qkUfCBe6Tkwc3NQkIKXTpnUrw4EMtr6sSMNSUADR9gBVQ==}
     dependencies:
-      '@vlcn.io/wa-sqlite': 0.20.0-next.0
-      '@vlcn.io/xplat-api': 0.13.0-next.0
+      '@vlcn.io/wa-sqlite': 0.20.0
+      '@vlcn.io/xplat-api': 0.13.0
       async-mutex: 0.4.0
     dev: false
 
-  /@vlcn.io/crsqlite@0.14.0-next.0:
-    resolution: {integrity: sha512-36u9X89NbvoJ12+LiPdsfg8nzihIuVUlkNImP+LpyyfmZH66ZkQA9rBAIuERel3ITMJS71ELC/4ixdkHNoVi1Q==}
+  /@vlcn.io/crsqlite@0.14.0:
+    resolution: {integrity: sha512-b0p/Sc68pnbUyxr3WTb7FA7CatX/XEwV3ZdvIIz7TxMmK619LHnVrt3qJWePuNDpCHOx2IttwSHA69BudIk4rQ==}
     requiresBuild: true
     dev: false
 
-  /@vlcn.io/direct-connect-browser@0.4.0-next.1:
-    resolution: {integrity: sha512-m415nlRmr3YD0jBtG3NLiDQY21O2ME5rhzf260EIsWlJP5n+gOIww85UFBESyAXWJrqunWQM3FQgs5M6fP/gDg==}
+  /@vlcn.io/direct-connect-browser@0.4.0:
+    resolution: {integrity: sha512-u9A847QPoJm1gOh6UpCRCxg2xf3mdAOYONXYOonwaxx4GGM9nLFR+B3WIySY0XmBr8lNEp9WwuVv+t56xaA1Vg==}
     dependencies:
-      '@vlcn.io/crsqlite-wasm': 0.14.0-next.0
-      '@vlcn.io/direct-connect-common': 0.5.0-next.1
-      '@vlcn.io/rx-tbl': 0.13.0-next.0
-      '@vlcn.io/xplat-api': 0.13.0-next.0
+      '@vlcn.io/crsqlite-wasm': 0.14.0
+      '@vlcn.io/direct-connect-common': 0.5.0
+      '@vlcn.io/rx-tbl': 0.13.0
+      '@vlcn.io/xplat-api': 0.13.0
     dev: false
 
-  /@vlcn.io/direct-connect-common@0.5.0-next.1:
-    resolution: {integrity: sha512-yYUJR7GY4eJCHVVMpwkur5Fexhpi2Oui9c5ZePhtvyKnxdbU8eSIBqwtij3lLIFkOiRBWbosSKu3N6Z1zj9t1Q==}
+  /@vlcn.io/direct-connect-common@0.5.0:
+    resolution: {integrity: sha512-ulnTCLX8bMdfU8f5uEm2NU5kOwVlRCPqVvYa4Hn2lJ13GXkBJlqRm8ndRCQD6b1dYKEbhm/Pdkr+GaH9ODsAtg==}
     dependencies:
       lib0: 0.2.78
     dev: false
 
-  /@vlcn.io/direct-connect-nodejs@0.5.0-next.6:
-    resolution: {integrity: sha512-zOGYmG1SXpDy7D6yPLFZit0q77tarurOj36clyzxpVZ7sMCc3AGTM6zlAb57Tw64338vDcFI34XQoKdf/j4bSg==}
+  /@vlcn.io/direct-connect-nodejs@0.5.0:
+    resolution: {integrity: sha512-tV8EfeIq0jSz4o97+qcvMRiIKwzkFOhsvNmRwErCBmF+3GRXdG93tGIEBEhmPo3SUK0HL+gmJEtW6u56t+kMBA==}
     dependencies:
-      '@vlcn.io/crsqlite': 0.14.0-next.0
-      '@vlcn.io/direct-connect-common': 0.5.0-next.1
-      '@vlcn.io/xplat-api': 0.13.0-next.0
+      '@vlcn.io/crsqlite': 0.14.0
+      '@vlcn.io/direct-connect-common': 0.5.0
+      '@vlcn.io/xplat-api': 0.13.0
       better-sqlite3: 8.4.0
       chokidar: 3.5.3
       throttle-debounce: 5.0.0
     dev: false
 
-  /@vlcn.io/react@2.4.0-next.1(react@18.2.0):
-    resolution: {integrity: sha512-WF4oSzDQ5D40tRLRBUZv55sTlaM2AXl53hllX6H7lZ1v4IfAMtmifilk+eQl0Hz2JTdprZUf8UV5D969l3x3iQ==}
+  /@vlcn.io/react@2.4.0(react@18.2.0):
+    resolution: {integrity: sha512-vPBDACC0HEshJlL2YeLUfgbPapEO5gch4UcMjYrUcKExySFM07IO3x7Fz5PLLJWYY2i6/edyshihqZbl3QbOZw==}
     peerDependencies:
       react: ^18
     dependencies:
-      '@vlcn.io/crsqlite-wasm': 0.14.0-next.0
-      '@vlcn.io/direct-connect-browser': 0.4.0-next.1
-      '@vlcn.io/rx-tbl': 0.13.0-next.0
-      '@vlcn.io/xplat-api': 0.13.0-next.0
+      '@vlcn.io/crsqlite-wasm': 0.14.0
+      '@vlcn.io/direct-connect-browser': 0.4.0
+      '@vlcn.io/rx-tbl': 0.13.0
+      '@vlcn.io/xplat-api': 0.13.0
       react: 18.2.0
     dev: false
 
-  /@vlcn.io/rx-tbl@0.13.0-next.0:
-    resolution: {integrity: sha512-S2jmup7FassTh86R/6aHaucsQjp9yUbG6qrIY6EVFkJaorjwKq+l3JDv3JRfG4qG1quhP0sdlvYdeuDIVGsgNw==}
+  /@vlcn.io/rx-tbl@0.13.0:
+    resolution: {integrity: sha512-vInhGhk5+76uUG05h/5p1Lzmxx/RNpXNyFRatMpTX/VcNfAK8z+1jqMWvQBq6eyfPya8p8IEmCkmpmtdgtdAgg==}
     dependencies:
-      '@vlcn.io/xplat-api': 0.13.0-next.0
+      '@vlcn.io/xplat-api': 0.13.0
     dev: false
 
-  /@vlcn.io/wa-sqlite@0.20.0-next.0:
-    resolution: {integrity: sha512-0ukEV/AW0N6kRnXgJrnApm7eGZ8Tz6e5obS5Vo6RU4T81c9BSpTaJVa6PjxPMLqPq+n6CFGZ9QCbQhR9ZWmBXg==}
+  /@vlcn.io/wa-sqlite@0.20.0:
+    resolution: {integrity: sha512-CkEtg6L6g1QiTupOJUYJkJOWFBTrrfkQxsvbOFkcWqLBi4389TOGnGYK9p5Fy0w8pZh8lTD5xjIL62h8mObkOQ==}
     dev: false
 
-  /@vlcn.io/xplat-api@0.13.0-next.0:
-    resolution: {integrity: sha512-cNtw0qvMdpDy2VSileUTvFHLAFW/XcPojcSKzYp/WAMZztm8OqnUoHatlDPHhAeNVd8SovaS12T/OzcSyGp/Ng==}
+  /@vlcn.io/xplat-api@0.13.0:
+    resolution: {integrity: sha512-dgAcX9iEwx/3+uVzlkLRIZvsJf0XXiffepWudXPpLlkWp8mTZ2eUwoHOWgISWBUTOUQ3jtmZRHqVZgySegRE/w==}
     dependencies:
       comlink: 4.4.1
     dev: false
@@ -4047,10 +4047,10 @@ packages:
     resolution: {integrity: sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==}
     dev: false
 
-  /mobx-react-lite@3.4.3(mobx@6.9.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-NkJREyFTSUXR772Qaai51BnE1voWx56LOL80xG7qkZr6vo8vEaLF3sz1JNUVh+rxmUzxYaqOhfuxTfqUh0FXUg==}
+  /mobx-react-lite@4.0.3(mobx@6.9.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-wEE1oT5zvDdvplG4HnRrFgPwg5GFVVrEtl42Er85k23zeu3om8H8wbDPgdbQP88zAihVsik6xJfw6VnzUl8fQw==}
     peerDependencies:
-      mobx: ^6.1.0
+      mobx: ^6.9.0
       react: ^16.8.0 || ^17 || ^18
       react-dom: '*'
       react-native: '*'
@@ -4060,21 +4060,22 @@ packages:
       react-native:
         optional: true
     dependencies:
-      mobx: 6.9.0
+      mobx: 6.9.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /mobx-state-tree@5.1.8(mobx@6.9.0):
+  /mobx-state-tree@5.1.8(mobx@6.9.1):
     resolution: {integrity: sha512-oe82BNgMr408e6DxMDNat8msXQTuyuqzJ97DPupbhchEfjjHyjsmPSwtXHl+nXiW3tybpb/cr5siUClBqKqv+Q==}
     peerDependencies:
       mobx: ^6.3.0
     dependencies:
-      mobx: 6.9.0
+      mobx: 6.9.1
     dev: false
 
-  /mobx@6.9.0:
-    resolution: {integrity: sha512-HdKewQEREEJgsWnErClfbFoVebze6rGazxFLU/XUyrII8dORfVszN1V0BMRnQSzcgsNNtkX8DHj3nC6cdWE9YQ==}
+  /mobx@6.9.1:
+    resolution: {integrity: sha512-7V41hvBmzCQg5n/xoZi2qkhREbnF3wHbzbIdR1sLJhVt6yWq2Zq0FlNahEt/RccOmEIjipvBqeQ4mlOEyMhaaA==}
     dev: false
 
   /ms@2.0.0:
@@ -4352,8 +4353,8 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /react-datepicker@4.15.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-kysEqVv6wRQkmAyn0wJi4Xx+JjBPBtXWfQSfh6sR3wdzZX1/LjYTPmaurnVI6ao177ecompg8ze7NCgtEGW78A==}
+  /react-datepicker@4.16.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-hNQ0PAg/LQoVbDUO/RWAdm/RYmPhN3cz7LuQ3hqbs24OSp69QCiKOJRrQ4jk1gv1jNR5oYu8SjjgfDh8q6Q1yw==}
     peerDependencies:
       react: ^16.9.0 || ^17 || ^18
       react-dom: ^16.9.0 || ^17 || ^18
@@ -5093,6 +5094,14 @@ packages:
       punycode: 2.3.0
     dev: true
 
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: false
@@ -5112,7 +5121,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /vite-plugin-pwa@0.16.4(vite@4.4.2)(workbox-build@7.0.0)(workbox-window@7.0.0):
+  /vite-plugin-pwa@0.16.4(vite@4.4.3)(workbox-build@7.0.0)(workbox-window@7.0.0):
     resolution: {integrity: sha512-lmwHFIs9zI2H9bXJld/zVTbCqCQHZ9WrpyDMqosICDV0FVnCJwniX1NMDB79HGTIZzOQkY4gSZaVTJTw6maz/Q==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -5123,14 +5132,14 @@ packages:
       debug: 4.3.4
       fast-glob: 3.3.0
       pretty-bytes: 6.1.0
-      vite: 4.4.2
+      vite: 4.4.3
       workbox-build: 7.0.0
       workbox-window: 7.0.0
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite-plugin-svgr@3.2.0(rollup@2.79.1)(vite@4.4.2):
+  /vite-plugin-svgr@3.2.0(rollup@2.79.1)(vite@4.4.3):
     resolution: {integrity: sha512-Uvq6niTvhqJU6ga78qLKBFJSDvxWhOnyfQSoKpDPMAGxJPo5S3+9hyjExE5YDj6Lpa4uaLkGc1cBgxXov+LjSw==}
     peerDependencies:
       vite: ^2.6.0 || 3 || 4
@@ -5138,14 +5147,14 @@ packages:
       '@rollup/pluginutils': 5.0.2(rollup@2.79.1)
       '@svgr/core': 7.0.0
       '@svgr/plugin-jsx': 7.0.0
-      vite: 4.4.2
+      vite: 4.4.3
     transitivePeerDependencies:
       - rollup
       - supports-color
     dev: false
 
-  /vite@4.4.2:
-    resolution: {integrity: sha512-zUcsJN+UvdSyHhYa277UHhiJ3iq4hUBwHavOpsNUGsTgjBeoBlK8eDt+iT09pBq0h9/knhG/SPrZiM7cGmg7NA==}
+  /vite@4.4.3:
+    resolution: {integrity: sha512-IMnXQXXWgLi5brBQx/4WzDxdzW0X3pjO4nqFJAuNvwKtxzAmPzFE1wszW3VDpAGQJm3RZkm/brzRdyGsnwgJIA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
