@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import styled from '@emotion/styled'
 import { withResizeDetector } from 'react-resize-detector'
-import { useLiveQuery } from 'dexie-react-hooks'
+import { useQuery } from '@vlcn.io/react'
 import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
@@ -11,8 +11,8 @@ import NavButtons from './NavButtons'
 import FilterNumbers from '../../shared/FilterNumbers'
 import Menu from '../../shared/Menu'
 import EditButton from './EditButton'
-import { dexie } from '../../../dexieClient'
 import storeContext from '../../../storeContext'
+import { ProjectUser } from '../../../utils/models'
 
 const TitleContainer = styled.div` 
   background-color: rgba(74, 20, 140, 0.1);
@@ -49,81 +49,86 @@ const TitleSymbols = styled.div`
   flex-wrap: wrap;
 `
 
-const ProjectFormTitle = ({ totalCount, filteredCount, width }) => {
-  const { session } = useContext(storeContext)
-  const { projectId } = useParams()
+export const FormTitle = withResizeDetector(
+  observer(({ totalCount, filteredCount, width }) => {
+    const { session } = useContext(storeContext)
+    const { projectId } = useParams()
 
-  const userMayEdit: boolean = useLiveQuery(async () => {
-    const projectUser = await dexie.project_users.get({
-      project_id: projectId,
-      user_email: session?.user?.email,
-    })
+    const projectUser = useQuery<ProjectUser>(
+      ctx,
+      'SELECT * FROM project_users where project_id = ? and user_email = ?',
+      [projectId, session?.user?.email],
+    ).data
 
-    return ['account_manager', 'project_manager'].includes(projectUser?.role)
-  })
+    const userMayEdit: boolean = [
+      'account_manager',
+      'project_manager',
+    ].includes(projectUser?.role)
 
-  if (width < 760) {
-    return (
-      <TitleContainer>
-        <Title>Projekt</Title>
-        <TitleSymbols>
-          <NavButtons />
-          <Menu white={false}>
+    if (width < 760) {
+      return (
+        <TitleContainer>
+          <Title>Projekt</Title>
+          <TitleSymbols>
+            <NavButtons />
+            <Menu white={false}>
+              {userMayEdit && [
+                <EditButton key="EditButton" />,
+                <AddButton key="AddButton" />,
+                <DeleteButton key="DeleteButton" />,
+              ]}
+              <FilterNumbers
+                filteredCount={filteredCount}
+                totalCount={totalCount}
+                asMenu
+              />
+            </Menu>
+          </TitleSymbols>
+        </TitleContainer>
+      )
+    }
+
+    if (width < 775) {
+      return (
+        <TitleContainer>
+          <Title>Projekt</Title>
+          <TitleSymbols>
+            <NavButtons />
             {userMayEdit && [
               <EditButton key="EditButton" />,
               <AddButton key="AddButton" />,
               <DeleteButton key="DeleteButton" />,
             ]}
-            <FilterNumbers
-              filteredCount={filteredCount}
-              totalCount={totalCount}
-              asMenu
-            />
-          </Menu>
-        </TitleSymbols>
-      </TitleContainer>
-    )
-  }
+            <Menu white={false}>
+              <FilterNumbers
+                filteredCount={filteredCount}
+                totalCount={totalCount}
+                asMenu
+              />
+            </Menu>
+          </TitleSymbols>
+        </TitleContainer>
+      )
+    }
 
-  if (width < 775) {
     return (
       <TitleContainer>
         <Title>Projekt</Title>
         <TitleSymbols>
           <NavButtons />
-          {userMayEdit && [
-            <EditButton key="EditButton" />,
-            <AddButton key="AddButton" />,
-            <DeleteButton key="DeleteButton" />,
-          ]}
-          <Menu white={false}>
-            <FilterNumbers
-              filteredCount={filteredCount}
-              totalCount={totalCount}
-              asMenu
-            />
-          </Menu>
+          {userMayEdit && (
+            <>
+              <EditButton />
+              <AddButton />
+              <DeleteButton />
+            </>
+          )}
+          <FilterNumbers
+            filteredCount={filteredCount}
+            totalCount={totalCount}
+          />
         </TitleSymbols>
       </TitleContainer>
     )
-  }
-
-  return (
-    <TitleContainer>
-      <Title>Projekt</Title>
-      <TitleSymbols>
-        <NavButtons />
-        {userMayEdit && (
-          <>
-            <EditButton />
-            <AddButton />
-            <DeleteButton />
-          </>
-        )}
-        <FilterNumbers filteredCount={filteredCount} totalCount={totalCount} />
-      </TitleSymbols>
-    </TitleContainer>
-  )
-}
-
-export default withResizeDetector(observer(ProjectFormTitle))
+  }),
+)

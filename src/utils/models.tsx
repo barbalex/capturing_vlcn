@@ -7,3 +7,11 @@ export type Project = {
   deleted: integer
   use_labels: integer
 }
+
+export type ProjectUser = {
+  id: string
+  project_id: string
+  email: string
+  role: string
+  deleted: integer
+}

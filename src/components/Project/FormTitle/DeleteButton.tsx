@@ -26,7 +26,7 @@ const Title = styled.div`
   user-select: none;
 `
 
-const ProjectDeleteButton = () => {
+export const DeleteButton = observer(() => {
   const { projectId } = useParams()
   const navigate = useNavigate()
 
@@ -85,6 +85,4 @@ const ProjectDeleteButton = () => {
       </Menu>
     </ErrorBoundary>
   )
-}
-
-export default observer(ProjectDeleteButton)
+})

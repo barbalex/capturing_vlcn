@@ -1,23 +1,18 @@
 import { observer } from 'mobx-react-lite'
-import { useLiveQuery } from 'dexie-react-hooks'
+import { useQuery } from '@vlcn.io/react'
 
 import FilterTitle from '../../shared/FilterTitle'
-import FormTitle from './FormTitle'
-import { dexie } from '../../../dexieClient'
+import {FormTitle as FormTitleComponent} from './FormTitle'
 
-export const ProjectFormTitleChooser = observer(() => {
+export const FormTitle = observer(() => {
   const showFilter = false // TODO:
 
-  const data = useLiveQuery(async () => {
-    const [filteredCount, totalCount] = await Promise.all([
-      dexie.projects.where({ deleted: 0 }).count(), // TODO: pass in filter
-      dexie.projects.where({ deleted: 0 }).count(),
-    ])
+  const totalCount = useQuery<integer>(
+    ctx,
+    'SELECT count(*) FROM projects where deleted = 0',
+  ).data
 
-    return { filteredCount, totalCount }
-  })
-  const filteredCount = data?.filteredCount
-  const totalCount = data?.totalCount
+  const filteredCount = totalCount // TODO:
 
   if (showFilter) {
     return (
@@ -30,5 +25,5 @@ export const ProjectFormTitleChooser = observer(() => {
     )
   }
 
-  return <FormTitle totalCount={totalCount} filteredCount={filteredCount} />
+  return <FormTitleComponent totalCount={totalCount} filteredCount={filteredCount} />
 })

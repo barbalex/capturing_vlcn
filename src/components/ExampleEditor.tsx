@@ -1,6 +1,6 @@
 import { useCachedState, useQuery } from '@vlcn.io/react'
-import { DBAsync } from '@vlcn.io/xplat-api'
 import { useDB } from '@vlcn.io/react'
+import { DBAsync } from '@vlcn.io/xplat-api'
 import { uuidv4 } from 'uuidv7'
 
 import randomWords from '../support/randomWords.js'

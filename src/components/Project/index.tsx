@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 import { ErrorBoundary } from '../shared/ErrorBoundary'
-import { ProjectFormTitleChooser as FormTitle } from './FormTitle'
+import { FormTitle } from './FormTitle'
 import { Form } from './Form'
 
 const Container = styled.div`
@@ -19,7 +19,7 @@ export const Project = ({ filter: showFilter }) => {
   return (
     <ErrorBoundary>
       <Container showfilter={showFilter}>
-        {/* <FormTitle showFilter={showFilter} /> */}
+        <FormTitle showFilter={showFilter} />
         'TODO: FormTitle'
         <Form showFilter={showFilter} />
       </Container>
