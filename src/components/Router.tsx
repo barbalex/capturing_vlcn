@@ -10,7 +10,7 @@ import { DataVersioning } from './Docs/DataVersioning'
 import { DataHistory } from './Docs/DataHistory'
 import { Projects } from '../routes/Projects'
 import { FourOhFour } from '../routes/404'
-import ProjectsComponent from './Projects'
+import { Projects as ProjectsComponent } from './Projects'
 // import ProjectComponent from './Project'
 // import TablesComponent from './Tables'
 // import TableComponent from './Table'
@@ -30,9 +30,9 @@ export const RouterComponent = (): React.FC => (
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
       <Route path="user" element={<User />} />
-      {/* <Route path="projects/*" element={<Projects />}>
+      <Route path="projects/*" element={<Projects />}>
         <Route index element={<ProjectsComponent />} />
-        <Route path=":projectId" element={<ProjectComponent />} />
+        {/* <Route path=":projectId" element={<ProjectComponent />} />
         <Route path=":projectId/tables" element={<TablesComponent />} />
         <Route path=":projectId/tables/:tableId" element={<TableComponent />} />
         <Route
@@ -78,10 +78,10 @@ export const RouterComponent = (): React.FC => (
         <Route
           path=":projectId/tables/:tableId1/rows/:rowId1/tables/:tableId2/rows/:rowId2"
           element={<RowComponent level={2} />}
-        />
+        /> */}
         <Route path="*" element={<FourOhFour />} />
       </Route>
-      <Route path="queued-updates/*" element={<QueuedUpdates />} /> */}
+      {/* <Route path="queued-updates/*" element={<QueuedUpdates />} /> */}
       <Route path="docs/*" element={<Docs />}>
         <Route index element={null} />
         <Route path="image-layer-types" element={<ImageLayerTypes />} />
