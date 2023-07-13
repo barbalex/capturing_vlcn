@@ -92,7 +92,7 @@ const TableForm = ({ showFilter }: TableFormProps) => {
       dexie.ttables.get(tableId),
       dexie.project_users.get({
         project_id: projectId,
-        user_email: session?.user?.email,
+        email: session?.user?.email,
       }),
     ])
 

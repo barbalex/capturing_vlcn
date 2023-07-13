@@ -34,7 +34,7 @@ const ProjectUserComponent = ({ projectUser }: Props) => {
     <StyledListItem
       secondaryAction={
         <IconButton
-          title={`${projectUser.user_email ?? ''} entfernen`}
+          title={`${projectUser.email ?? ''} entfernen`}
           onClick={onClickRemove}
           size="medium"
         >
@@ -42,7 +42,7 @@ const ProjectUserComponent = ({ projectUser }: Props) => {
         </IconButton>
       }
     >
-      <ListItemText>{`${projectUser.user_email} (${projectUser.role})`}</ListItemText>
+      <ListItemText>{`${projectUser.email} (${projectUser.role})`}</ListItemText>
     </StyledListItem>
   )
 }

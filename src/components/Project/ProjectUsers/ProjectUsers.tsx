@@ -11,7 +11,7 @@ const ProjectUsersComponent = () => {
       async () =>
         await dexie.project_users
           .where({ deleted: 0, project_id: projectId })
-          .sortBy('user_email'),
+          .sortBy('email'),
     ) ?? []
 
   return projectUsers.map((u) => (

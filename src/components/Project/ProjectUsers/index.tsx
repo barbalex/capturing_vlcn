@@ -83,7 +83,7 @@ const ProjectUsersIndex = () => {
       dexie.project_users.where({ deleted: 0, project_id: projectId }).count(),
       dexie.project_users.get({
         project_id: projectId,
-        user_email: session?.user?.email,
+        email: session?.user?.email,
       }),
     ])
 

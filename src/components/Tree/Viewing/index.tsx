@@ -61,7 +61,7 @@ const ViewingProject = ({ project }: Props) => {
         .count()
       const projectUser: ProjectUser = await dexie.project_users.get({
         project_id: project.id,
-        user_email: session?.user?.email,
+        email: session?.user?.email,
       })
 
       const userMayEditStructure = [

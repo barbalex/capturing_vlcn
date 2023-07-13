@@ -50,15 +50,15 @@ const roleTypes = [
 const AddProjectUser = ({ setAddNew }) => {
   const { projectId } = useParams()
 
-  const [state, setState] = useState({ user_email: '', role: undefined })
+  const [state, setState] = useState({ email: '', role: undefined })
   const onBlur = useCallback(
     (e) => {
       setState({ ...state, [e.target.name]: e.target.value })
-      if (state.user_email && state.role) {
+      if (state.email && state.role) {
         // TODO: insert project_user
         insertProjectUser({
           projectId,
-          email: state.user_email,
+          email: state.email,
           role: state.role,
         })
         setAddNew(false)
@@ -70,11 +70,11 @@ const AddProjectUser = ({ setAddNew }) => {
   const onClickSave = useCallback(() => {
     insertProjectUser({
       projectId,
-      email: state.user_email,
+      email: state.email,
       role: state.role,
     })
     setAddNew(false)
-  }, [projectId, setAddNew, state.role, state.user_email])
+  }, [projectId, setAddNew, state.role, state.email])
 
   return (
     <>
@@ -84,7 +84,7 @@ const AddProjectUser = ({ setAddNew }) => {
           value=""
           label="Email-Adresse"
           type="email"
-          name="user_email"
+          name="email"
           onBlur={onBlur}
         />
         <RadioButtonGroup

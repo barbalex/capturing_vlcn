@@ -100,7 +100,7 @@ const Node = ({ node }: Props): React.FC => {
   const userMayEditStructure = useLiveQuery(async () => {
     const projectUser = await dexie.project_users.get({
       project_id: node.id,
-      user_email: session?.user?.email,
+      email: session?.user?.email,
     })
 
     return ['account_manager', 'project_manager'].includes(projectUser?.role)

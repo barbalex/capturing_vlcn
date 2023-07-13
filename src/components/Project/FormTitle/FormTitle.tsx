@@ -59,7 +59,7 @@ export const FormTitle = withResizeDetector(
 
     const projectUser = useQuery<ProjectUser>(
       ctx,
-      'SELECT * FROM project_users where project_id = ? and user_email = ?',
+      'SELECT * FROM project_users where project_id = ? and email = ?',
       [projectId, session?.user?.email],
     ).data
 

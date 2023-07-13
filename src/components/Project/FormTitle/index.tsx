@@ -12,8 +12,8 @@ export const FormTitle = observer(() => {
 
   const totalCount = useQuery<integer>(
     ctx,
-    'SELECT count(*) FROM projects where deleted = 0',
-  ).data
+    'SELECT count(*) as count FROM projects where deleted = 0;',
+  ).data?.[0]?.count
 
   const filteredCount = totalCount // TODO:
 

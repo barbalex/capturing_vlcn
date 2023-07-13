@@ -62,7 +62,7 @@ const TableFormTitle = ({ totalCount, filteredCount, width }: Props) => {
   const userMayEdit: boolean = useLiveQuery(async () => {
     const projectUser: IProjectUser = await dexie.project_users.get({
       project_id: projectId,
-      user_email: session?.user?.email,
+      email: session?.user?.email,
     })
     const userRole = projectUser.role
     const userMayEdit = [
