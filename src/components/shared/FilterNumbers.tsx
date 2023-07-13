@@ -36,7 +36,7 @@ interface Props {
   asMenu?: boolean
 }
 
-const FilterNumbers = ({ filteredCount, totalCount, asMenu }: Props) => {
+export const FilterNumbers = ({ filteredCount, totalCount, asMenu }: Props) => {
   if (asMenu) {
     return (
       <StyledMenuItem dense>
@@ -55,5 +55,3 @@ const FilterNumbers = ({ filteredCount, totalCount, asMenu }: Props) => {
     </OuterContainer>
   )
 }
-
-export default FilterNumbers

@@ -4,12 +4,12 @@ import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 import { orange } from '@mui/material/colors'
 
-import ErrorBoundary from '../../shared/ErrorBoundary'
+import { ErrorBoundary } from '../../shared/ErrorBoundary'
 import storeContext from '../../../storeContext'
 import EditIcon from '../../../images/icons/edit_project'
 import { IStore } from '../../../store'
 
-const ProjectEditButton = () => {
+export const EditButton = observer(() => {
   const { projectId } = useParams()
   const store: IStore = useContext(storeContext)
   const { editingProjects, setProjectEditing } = store
@@ -40,6 +40,4 @@ const ProjectEditButton = () => {
       </IconButton>
     </ErrorBoundary>
   )
-}
-
-export default observer(ProjectEditButton)
+})

@@ -8,20 +8,20 @@ import {
   FaArrowDown,
 } from 'react-icons/fa'
 import { Link, resolvePath, useParams } from 'react-router-dom'
-import { useLiveQuery } from 'dexie-react-hooks'
+import { useQuery, useDB } from '@vlcn.io/react'
 import styled from '@emotion/styled'
 
 import StoreContext from '../../../storeContext'
 import { MenuChildrenButton } from '../../Table/FormTitle/NavButtons'
-import { dexie } from '../../../dexieClient'
 import { IStore } from '../../../store'
 import sortProjectsByLabelName from '../../../utils/sortProjectsByLabelName'
+import { Project, Table } from '../../../utils/models'
 
 const StyledFaArrowDown = styled(FaArrowDown)`
   font-size: 1.75rem !important;
 `
 
-const ProjectNavButtons = () => {
+export const NavButtons = observer(() => {
   const { projectId } = useParams()
 
   const store: IStore = useContext(StoreContext)
@@ -29,26 +29,23 @@ const ProjectNavButtons = () => {
     store
   const editing = editingProjects.get(projectId)?.editing ?? false
 
-  const result = useLiveQuery(async () => {
-    const projects = await dexie.projects
-      .where({ deleted: 0 })
-      .sortBy('', sortProjectsByLabelName)
+  const dbid: string = localStorage.getItem('remoteDbid')
+  const ctx = useDB(dbid)
 
-    const projectIds = projects.map((p) => p.id)
-    setHorizontalNavIds(projectIds)
+  const projectIds: string[] = useQuery<Project>(
+    ctx,
+    'SELECT id FROM projects where deleted = 0',
+    [],
+  ).data.map((p) => p.id)
+  setHorizontalNavIds(projectIds)
+  const tables = useQuery<Table>(
+    ctx,
+    'SELECT id FROM projects where deleted = 0 and type = ? and project_id = ?',
+    ['standard', projectId],
+  )
+    .data.sort(sortProjectsByLabelName)
+    .map((p) => p.id)
 
-    const tables = await dexie.ttables
-      .where({
-        deleted: 0,
-        project_id: projectId,
-        type: 'standard',
-      })
-      .toArray()
-
-    return { projectIds, tables }
-  }, [])
-  const projectIds: string[] = result?.projectIds ?? []
-  const tables: string[] = result?.tables ?? []
   const tablesTo =
     !editing && tables.length === 1
       ? `${['tables', tables[0]?.id, 'rows'].join('/')}`
@@ -126,6 +123,4 @@ const ProjectNavButtons = () => {
       )}
     </>
   )
-}
-
-export default observer(ProjectNavButtons)
+})

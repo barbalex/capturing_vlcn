@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import constants from '../../utils/constants'
 import labelFromLabeledTable from '../../utils/labelFromLabeledTable'
-import { Project } from '../../dexieClient'
+import { Project } from '../../utils/models'
 
 const StyledListItem = styled(ListItem)`
   min-height: ${constants.singleRowHeight};

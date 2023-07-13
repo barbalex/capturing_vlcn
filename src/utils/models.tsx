@@ -15,3 +15,16 @@ export type ProjectUser = {
   role: string
   deleted: integer
 }
+
+export type Table = {
+  id: string
+  project_id: string
+  rel_type: string
+  name: string
+  label: string
+  singular_label: string
+  row_label: string
+  sort: integer
+  type: string
+  deleted: integer
+}

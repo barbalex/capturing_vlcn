@@ -1,16 +1,16 @@
 import { useContext } from 'react'
 import styled from '@emotion/styled'
 import { withResizeDetector } from 'react-resize-detector'
-import { useQuery } from '@vlcn.io/react'
+import { useQuery, useDB } from '@vlcn.io/react'
 import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
 import { DeleteButton } from './DeleteButton'
 import { AddButton } from './AddButton'
-import NavButtons from './NavButtons'
-import FilterNumbers from '../../shared/FilterNumbers'
-import Menu from '../../shared/Menu'
-import EditButton from './EditButton'
+import { NavButtons } from './NavButtons'
+import { FilterNumbers } from '../../shared/FilterNumbers'
+import { Menu } from '../../shared/Menu'
+import { EditButton } from './EditButton'
 import storeContext from '../../../storeContext'
 import { ProjectUser } from '../../../utils/models'
 
@@ -53,6 +53,9 @@ export const FormTitle = withResizeDetector(
   observer(({ totalCount, filteredCount, width }) => {
     const { session } = useContext(storeContext)
     const { projectId } = useParams()
+
+    const dbid: string = localStorage.getItem('remoteDbid')
+    const ctx = useDB(dbid)
 
     const projectUser = useQuery<ProjectUser>(
       ctx,
