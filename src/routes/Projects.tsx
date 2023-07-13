@@ -203,7 +203,8 @@ export const Projects = observer((): React.FC => {
         maxSize={-10}
         resizerStyle={{ width: treeResizerWidth }}
       >
-        {showTree ? <Tree /> : <></>}
+        {/* {showTree ? <Tree /> : <></>} */}
+        {showTree ? 'Tree' : <></>}
         <StyledSplitPane
           split="vertical"
           size={formPaneSize}
