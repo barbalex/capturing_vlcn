@@ -8,7 +8,7 @@ import { useDB } from '@vlcn.io/react'
 import { useQuery } from '@vlcn.io/react'
 
 import storeContext from '../../storeContext'
-import Row from './Row'
+import { Row } from './Row'
 import { ErrorBoundary } from '../shared/ErrorBoundary'
 import constants from '../../utils/constants'
 // import insertProject from '../../utils/insertProject'

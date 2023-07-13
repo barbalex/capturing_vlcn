@@ -1,4 +1,4 @@
-import { useEffect, useContext, useRef, PropsWithChildren } from 'react' 
+import { useEffect, useContext, useRef, PropsWithChildren } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from '@emotion/styled'
 import SplitPane from 'react-split-pane'
@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import StoreContext from '../storeContext'
-import { Login } from '../components/Login'
+// import { Login } from '../components/Login'
 import constants from '../utils/constants'
 // import Tree from '../components/Tree'
 // import MapComponent from '../components/Map'
@@ -127,7 +127,8 @@ export const Projects = observer((): React.FC => {
     document.title = 'Erfassen: Projekte'
   }, [])
 
-  if (!session || sessionCounter === 0) return <Login />
+  // TODO:
+  // if (!session || sessionCounter === 0) return <Login />
 
   /**
    * Idea for preventing map from being re-initialized on tab changes

@@ -21,7 +21,7 @@ const StyledListItem = styled(ListItem)`
 
 type ProjectRowProps = { row: Project }
 
-const ProjectRow = ({ row }: ProjectRowProps) => {
+export const Row = ({ row }: ProjectRowProps) => {
   const label = labelFromLabeledTable({
     object: row,
     useLabels: row.use_labels,
@@ -33,5 +33,3 @@ const ProjectRow = ({ row }: ProjectRowProps) => {
     </StyledListItem>
   )
 }
-
-export default ProjectRow
