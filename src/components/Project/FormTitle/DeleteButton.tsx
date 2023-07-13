@@ -6,12 +6,12 @@ import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { resolvePath, useNavigate, useParams } from 'react-router-dom'
-import { useLiveQuery } from 'dexie-react-hooks'
+import { useQuery, useDB } from '@vlcn.io/react'
 
 import StoreContext from '../../../storeContext'
-import ErrorBoundary from '../../shared/ErrorBoundary'
-import { dexie, Project } from '../../../dexieClient'
+import { ErrorBoundary } from '../../shared/ErrorBoundary'
 import { IStore } from '../../../store'
+import { Project } from '../../../utils/models'
 
 const TitleRow = styled.div`
   display: flex;
@@ -30,14 +30,18 @@ export const DeleteButton = observer(() => {
   const { projectId } = useParams()
   const navigate = useNavigate()
 
+  const dbid: string = localStorage.getItem('remoteDbid')
+  const ctx = useDB(dbid)
+
   const store: IStore = useContext(StoreContext)
-  const { activeNodeArray, removeNodeWithChildren, session } = store
+  const { activeNodeArray, removeNodeWithChildren } = store
   // const filter = { todo: 'TODO: was in store' }
 
-  const deleted: boolean = useLiveQuery(async () => {
-    const row: Project = await dexie.projects.get(projectId)
-    return row.deleted
-  }, [projectId])
+  const project = useQuery<Project>(
+    ctx,
+    'SELECT * FROM projects where id = ?',
+    [projectId],
+  ).data
 
   const [anchorEl, setAnchorEl] = useState<HTMLAnchorElement>(null)
   const closeMenu = useCallback(() => {
@@ -49,13 +53,12 @@ export const DeleteButton = observer(() => {
     [],
   )
   const remove = useCallback(async () => {
-    const row: Project = await dexie.projects.get(projectId)
-    row.deleteOnServerAndClient({ session })
+    ctx.db.exec('update projects set deleted = 1 where id = ?;', [projectId])
     setAnchorEl(null)
     // need to remove node from nodes
     removeNodeWithChildren(activeNodeArray)
     navigate(resolvePath(`..`, window.location.pathname))
-  }, [activeNodeArray, navigate, projectId, removeNodeWithChildren, session])
+  }, [activeNodeArray, navigate, projectId, removeNodeWithChildren, ctx.db])
 
   return (
     <ErrorBoundary>
@@ -65,7 +68,7 @@ export const DeleteButton = observer(() => {
         aria-label="Projekt löschen"
         title="Projekt löschen"
         onClick={onClickButton}
-        disabled={deleted === 1}
+        disabled={project.deleted === 1}
         size="large"
       >
         <FaMinus />

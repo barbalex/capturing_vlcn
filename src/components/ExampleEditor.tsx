@@ -1,7 +1,6 @@
-import { useCachedState, useQuery } from '@vlcn.io/react'
-import { useDB } from '@vlcn.io/react'
+import { useCachedState, useQuery, useDB } from '@vlcn.io/react'
 import { DBAsync } from '@vlcn.io/xplat-api'
-import { uuidv4 } from 'uuidv7'
+import { uuidv7 } from 'uuidv7'
 
 import randomWords from '../support/randomWords.js'
 
@@ -19,7 +18,7 @@ export const ExampleEditor = () => {
 
   const addData = () => {
     ctx.db.exec('INSERT INTO projects (id, name) VALUES (?, ?);', [
-      uuidv4(),
+      uuidv7(),
       randomWords(wordOptions) as string,
     ])
   }

@@ -2,28 +2,31 @@ import React, { useCallback, useContext } from 'react'
 import { FaPlus } from 'react-icons/fa'
 import IconButton from '@mui/material/IconButton'
 import { resolvePath, useNavigate } from 'react-router-dom'
+import { uuidv7 } from 'uuidv7'
+import { useDB } from '@vlcn.io/react'
 
-import ErrorBoundary from '../../shared/ErrorBoundary'
-import insertProject from '../../../utils/insertProject'
-import { dexie, IAccount } from '../../../dexieClient'
+import { ErrorBoundary } from '../../shared/ErrorBoundary'
 import storeContext from '../../../storeContext'
 import { IStore } from '../../../store'
 
-const ProjectAddButton = () => {
+export const AddButton = () => {
   const navigate = useNavigate()
 
   const store: IStore = useContext(storeContext)
   const { setProjectEditing } = store
 
+  const dbid: string = localStorage.getItem('remoteDbid')
+  const ctx = useDB(dbid)
+
   const onClick = useCallback(async () => {
-    const account: IAccount = await dexie.accounts.toCollection().first()
-    const newProjectId = await insertProject({ account })
-    navigate(resolvePath(`../${newProjectId}`, window.location.pathname))
+    const id = uuidv7()
+    ctx.db.exec('INSERT INTO projects (id) VALUES (?);', [id])
+    navigate(resolvePath(`../${id}`, window.location.pathname))
     setProjectEditing({
-      id: newProjectId,
+      id,
       editing: true,
     })
-  }, [navigate, setProjectEditing])
+  }, [ctx.db, navigate, setProjectEditing])
 
   return (
     <ErrorBoundary>
@@ -38,5 +41,3 @@ const ProjectAddButton = () => {
     </ErrorBoundary>
   )
 }
-
-export default ProjectAddButton
