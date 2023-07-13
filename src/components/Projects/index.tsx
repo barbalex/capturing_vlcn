@@ -3,7 +3,6 @@ import { observer } from 'mobx-react-lite'
 import styled from '@emotion/styled'
 import { FaPlus } from 'react-icons/fa'
 import IconButton from '@mui/material/IconButton'
-import { useLiveQuery } from 'dexie-react-hooks'
 import { useNavigate } from 'react-router-dom'
 import { useDB } from '@vlcn.io/react'
 import { useQuery } from '@vlcn.io/react'
@@ -12,8 +11,7 @@ import storeContext from '../../storeContext'
 import Row from './Row'
 import ErrorBoundary from '../shared/ErrorBoundary'
 import constants from '../../utils/constants'
-import { dexie } from '../../dexieClient'
-import insertProject from '../../utils/insertProject'
+// import insertProject from '../../utils/insertProject'
 import sortProjectsByLabelName from '../../utils/sortProjectsByLabelName'
 import FilterNumbers from '../shared/FilterNumbers'
 import { IStore } from '../../store'
@@ -64,39 +62,24 @@ export const Projects = observer(() => {
   const dbid: string = localStorage.getItem('remoteDbid')
   const ctx = useDB(dbid)
 
-  const projects = useQuery<Project>(
+  const projectsUnsorted = useQuery<Project>(
     ctx,
-    'SELECT * FROM projects ORDER BY id DESC',
+    `SELECT * FROM projects ORDER BY id DESC`,
   ).data
+  const projects = projectsUnsorted.sort(sortProjectsByLabelName)
 
-  const data = useLiveQuery(async () => {
-    const [projects, account, filteredCount, totalCount] = await Promise.all([
-      dexie.projects.where({ deleted: 0 }).sortBy('', sortProjectsByLabelName),
-      dexie.accounts.toCollection().first(),
-      dexie.projects.where({ deleted: 0 }).count(), // TODO: pass in filter
-      dexie.projects.where({ deleted: 0 }).count(),
-    ])
-
-    return {
-      projects,
-      account,
-      filteredCount,
-      totalCount,
-    }
-  })
-  const projects = data?.projects ?? []
-  const account = data?.account
-  const filteredCount = data?.filteredCount
-  const totalCount = data?.totalCount
+  const filteredCount = projectsUnsorted.length // TODO: pass in filter
+  const totalCount = projectsUnsorted.length
 
   const add = useCallback(async () => {
-    const newId = await insertProject({ account })
+    // TODO:
+    // const newId = await insertProject({ account })
     navigate(newId)
     setProjectEditing({
       id: newId,
       editing: true,
     })
-  }, [account, navigate, setProjectEditing])
+  }, [navigate, setProjectEditing])
 
   // console.log('ProjectsList rendering')
 
@@ -111,7 +94,8 @@ export const Projects = observer(() => {
               title="neues Projekt"
               onClick={add}
               size="large"
-              disabled={!account}
+              // TODO:
+              // disabled={!account}
             >
               <FaPlus />
             </IconButton>
