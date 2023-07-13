@@ -40,7 +40,7 @@ export const NavButtons = observer(() => {
   setHorizontalNavIds(projectIds)
   const tables = useQuery<Table>(
     ctx,
-    'SELECT id FROM projects where deleted = 0 and type = ? and project_id = ?',
+    'SELECT id FROM tables where deleted = 0 and type = ? and project_id = ?',
     ['standard', projectId],
   )
     .data.sort(sortProjectsByLabelName)
