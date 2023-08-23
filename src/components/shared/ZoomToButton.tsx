@@ -7,6 +7,7 @@ import { ErrorBoundary } from './ErrorBoundary'
 import storeContext from '../../storeContext'
 import boundsFromBbox from '../../utils/boundsFromBbox'
 import { IStore } from '../../store'
+import { state$ } from '../../state'
 
 interface Props {
   bbox: number[]
@@ -15,12 +16,13 @@ interface Props {
 
 const ZoomToButton = ({ bbox, geometryExists }: Props) => {
   const store: IStore = useContext(storeContext)
-  const { showMap, setShowMap, flyToMapBounds } = store
+  const { flyToMapBounds } = store
+  const showMap = state$.showMap.use()
 
   const onClick = useCallback(async () => {
-    if (!showMap) setShowMap(true)
+    if (!showMap) state$.showMap.set(true)
     setTimeout(() => flyToMapBounds(boundsFromBbox(bbox)))
-  }, [showMap, setShowMap, flyToMapBounds, bbox])
+  }, [showMap, flyToMapBounds, bbox])
 
   return (
     <ErrorBoundary>

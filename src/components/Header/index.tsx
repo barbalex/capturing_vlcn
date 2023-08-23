@@ -34,7 +34,7 @@ export const Header = observer(() => {
     <ErrorBoundary>
       <StyledAppBar position="static">
         <Toolbar>
-          {session ? <HeaderAuthenticated /> : <HeaderAnonymus />}
+          {session || true ? <HeaderAuthenticated /> : <HeaderAnonymus />}
         </Toolbar>
       </StyledAppBar>
     </ErrorBoundary>

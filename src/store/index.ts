@@ -25,9 +25,6 @@ export const MobxStore = types
     lastTouchedNode: types.optional(types.array(types.string), []),
     nodes: types.optional(types.array(types.array(types.string)), []),
     notifications: types.map(NotificationType),
-    showTree: types.optional(types.boolean, true),
-    showForm: types.optional(types.boolean, true),
-    showMap: types.optional(types.boolean, false),
     mapZoom: types.optional(types.number, 0),
     mapInitiated: types.optional(types.boolean, false),
     singleColumnView: types.optional(types.boolean, false),
@@ -158,15 +155,6 @@ export const MobxStore = types
       },
       setBounds(val): void {
         self.bounds = val
-      },
-      setShowTree(val: boolean): void {
-        self.showTree = val
-      },
-      setShowForm(val: boolean): void {
-        self.showForm = val
-      },
-      setShowMap(val: boolean): void {
-        self.showMap = val
       },
       setLocalMapShow({ id, show }: { id: string; show: boolean }): void {
         self.localMapShow.set(id, { id, show })

@@ -11,6 +11,7 @@ import constants from '../utils/constants'
 // import Tree from '../components/Tree'
 // import MapComponent from '../components/Map'
 import { IStore } from '../store'
+import { state$ } from '../state'
 
 export const StyledSplitPane = styled(SplitPane)`
   .Resizer {
@@ -108,9 +109,6 @@ const animate = {
 export const Projects = observer((): React.FC => {
   const store: IStore = useContext(StoreContext)
   const {
-    showTree,
-    showForm,
-    showMap,
     mapInitiated,
     horizontalNavIds,
     activeNodeArray,
@@ -118,6 +116,9 @@ export const Projects = observer((): React.FC => {
     // session,
     // sessionCounter,
   } = store
+  const showMap = state$.showMap.use()
+  const showTree = state$.showTree.use()
+  const showForm = state$.showForm.use()
 
   // console.log('Projects, mapInitiated:', mapInitiated)
 

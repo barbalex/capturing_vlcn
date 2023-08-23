@@ -15,6 +15,7 @@ import constants from '../../../utils/constants'
 import storeContext from '../../../storeContext'
 import { ServerConnected } from './ServerConnected'
 import { IStore } from '../../../store'
+import { state$ } from '../../../state'
 
 const SiteTitle = styled(Button)`
   display: none;
@@ -70,9 +71,9 @@ const UserIcon = styled(MdPerson)`
 // `
 
 export const HeaderAuthenticated = observer(() => {
-  const store: IStore = useContext(storeContext)
-  const { showTree, showForm, showMap, setShowTree, setShowForm, setShowMap } =
-    store
+  const showMap = state$.showMap.use()
+  const showTree = state$.showTree.use()
+  const showForm = state$.showForm.use()
 
   const { pathname } = useLocation()
   const { width, ref: resizeRef } = useResizeDetector()
@@ -82,14 +83,14 @@ export const HeaderAuthenticated = observer(() => {
   const isUser = pathname.includes('/user')
 
   const onClickTree = useCallback(() => {
-    setShowTree(!showTree)
-  }, [setShowTree, showTree])
+    state$.showTree.set(!showTree)
+  }, [showTree])
   const onClickForm = useCallback(() => {
-    setShowForm(!showForm)
-  }, [setShowForm, showForm])
+    state$.showForm.set(!showForm)
+  }, [showForm])
   const onClickMap = useCallback(() => {
-    setShowMap(!showMap)
-  }, [setShowMap, showMap])
+    state$.showMap.set(!showMap)
+  }, [showMap])
 
   // console.log({ isUser })
 

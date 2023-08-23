@@ -3,6 +3,7 @@ import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import { BrowserRouter } from 'react-router-dom'
 import { onSnapshot } from 'mobx-state-tree'
 import isEqual from 'lodash/isEqual'
+import { enableReactUse } from '@legendapp/state/config/enableReactUse'
 
 import { MobxStore, IStore } from './store'
 import materialTheme from './utils/materialTheme'
@@ -15,6 +16,7 @@ import { RouterComponent } from './components/Router'
 import { ExampleEditor } from './components/ExampleEditor.js'
 
 // TODO: auth via firebase?
+enableReactUse()
 
 // persisting indexedDB: https://dexie.org/docs/StorageManager#controlling-persistence
 // TODO: consider calling this only if user choose it in settings

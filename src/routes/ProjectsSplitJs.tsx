@@ -11,6 +11,7 @@ import constants from '../utils/constants'
 import Tree from '../components/Tree'
 import MapComponent from '../components/Map'
 import { IStore } from '../store'
+import { state$ } from '../state'
 
 const StyledSplitPane = styled(SplitPane)`
   .Resizer {
@@ -55,7 +56,10 @@ const Container = styled.div`
 
 const ProjectsPage = () => {
   const store: IStore = useContext(StoreContext)
-  const { showTree, showForm, showMap, mapInitiated, session } = store
+  const { mapInitiated, session } = store
+  const showMap = state$.showMap.use()
+  const showTree = state$.showTree.use()
+  const showForm = state$.showForm.use()
 
   // console.log('Projects, mapInitiated:', mapInitiated)
 
