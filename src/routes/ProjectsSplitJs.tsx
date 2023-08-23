@@ -56,10 +56,11 @@ const Container = styled.div`
 
 const ProjectsPage = () => {
   const store: IStore = useContext(StoreContext)
-  const { mapInitiated, session } = store
+  const { session } = store
   const showMap = state$.showMap.use()
   const showTree = state$.showTree.use()
   const showForm = state$.showForm.use()
+  const mapInitiated = state$.mapInitiated.use()
 
   // console.log('Projects, mapInitiated:', mapInitiated)
 

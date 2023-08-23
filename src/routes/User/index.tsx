@@ -44,8 +44,6 @@ export const User = observer(() => {
 
   const navigate = useNavigate()
 
-  // console.log('Projects, mapInitiated:', mapInitiated)
-
   useEffect(() => {
     document.title = 'Erfassen: Benutzer'
   }, [])

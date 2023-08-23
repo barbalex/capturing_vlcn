@@ -109,7 +109,6 @@ const animate = {
 export const Projects = observer((): React.FC => {
   const store: IStore = useContext(StoreContext)
   const {
-    mapInitiated,
     horizontalNavIds,
     activeNodeArray,
     previousActiveNodeArray,
@@ -119,8 +118,7 @@ export const Projects = observer((): React.FC => {
   const showMap = state$.showMap.use()
   const showTree = state$.showTree.use()
   const showForm = state$.showForm.use()
-
-  // console.log('Projects, mapInitiated:', mapInitiated)
+  const mapInitiated = state$.mapInitiated.use()
 
   const containerEl = useRef(null)
 
