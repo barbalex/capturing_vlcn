@@ -29,6 +29,7 @@ export const Header = observer(() => {
   const store: IStore = useContext(storeContext)
   const { session } = store
   // console.log({ session })
+  // TODO: remoive || true when session is implemented
 
   return (
     <ErrorBoundary>

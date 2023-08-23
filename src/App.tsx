@@ -39,8 +39,6 @@ export const App = () => {
       let st
       if (dbStore) {
         // reset some values
-        if (!dbStore?.store?.showMap) dbStore.store.mapInitiated = false
-        dbStore.store.notifications = {}
         dbStore.store.session = undefined
         dbStore.store.sessionCounter = 0
         st = MobxStore.create(dbStore?.store)

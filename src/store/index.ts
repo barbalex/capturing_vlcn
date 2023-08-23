@@ -24,7 +24,7 @@ export const MobxStore = types
     // is clicked, the list jumps back to the active node :-(
     lastTouchedNode: types.optional(types.array(types.string), []),
     nodes: types.optional(types.array(types.array(types.string)), []),
-    notifications: types.map(NotificationType),
+    // notifications: types.map(NotificationType),
     mapZoom: types.optional(types.number, 0),
     mapInitiated: types.optional(types.boolean, false),
     singleColumnView: types.optional(types.boolean, false),
@@ -235,32 +235,32 @@ export const MobxStore = types
         const newOpenNodes = Array.from(set).map(JSON.parse)
         self.nodes = newOpenNodes
       },
-      addNotification(valPassed): string {
-        const val = {
-          // set default values
-          id: window.crypto.randomUUID(),
-          time: Date.now(),
-          duration: 10000, // standard value: 10000
-          dismissable: true,
-          allDismissable: true,
-          type: 'error',
-          // overwrite with passed in ones:
-          ...valPassed,
-        }
-        self.notifications.set(val.id, val)
-        // remove after duration
-        setTimeout(() => {
-          self.removeNotificationById(val.id)
-        }, val.duration)
-        return val.id
-      },
-      removeNotificationById(id: string): void {
-        // does not seem to work for many???
-        self.notifications.delete(id)
-      },
-      removeAllNotifications(): void {
-        self.notifications.clear()
-      },
+      // addNotification(valPassed): string {
+      //   const val = {
+      //     // set default values
+      //     id: window.crypto.randomUUID(),
+      //     time: Date.now(),
+      //     duration: 10000, // standard value: 10000
+      //     dismissable: true,
+      //     allDismissable: true,
+      //     type: 'error',
+      //     // overwrite with passed in ones:
+      //     ...valPassed,
+      //   }
+      //   self.notifications.set(val.id, val)
+      //   // remove after duration
+      //   setTimeout(() => {
+      //     self.removeNotificationById(val.id)
+      //   }, val.duration)
+      //   return val.id
+      // },
+      // removeNotificationById(id: string): void {
+      //   // does not seem to work for many???
+      //   self.notifications.delete(id)
+      // },
+      // removeAllNotifications(): void {
+      //   self.notifications.clear()
+      // },
       setSingleColumnView(val: boolean): void {
         self.singleColumnView = val
       },
