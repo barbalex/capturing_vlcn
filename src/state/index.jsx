@@ -1,4 +1,4 @@
-import { observable, when, computed } from '@legendapp/state'
+import { observable, when } from '@legendapp/state'
 import {
   persistObservable,
   configureObservablePersistence,
