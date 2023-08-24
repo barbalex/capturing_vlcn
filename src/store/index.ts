@@ -2,7 +2,6 @@ import { types, onAction } from 'mobx-state-tree'
 // import { autorun } from 'mobx'
 import isEqual from 'lodash/isEqual'
 
-import NotificationType from './Notification'
 import EditingProjectType from './EditingProject'
 import ShowLocalMapsType from './ShowLocalMaps'
 
@@ -235,32 +234,6 @@ export const MobxStore = types
         const newOpenNodes = Array.from(set).map(JSON.parse)
         self.nodes = newOpenNodes
       },
-      // addNotification(valPassed): string {
-      //   const val = {
-      //     // set default values
-      //     id: window.crypto.randomUUID(),
-      //     time: Date.now(),
-      //     duration: 10000, // standard value: 10000
-      //     dismissable: true,
-      //     allDismissable: true,
-      //     type: 'error',
-      //     // overwrite with passed in ones:
-      //     ...valPassed,
-      //   }
-      //   self.notifications.set(val.id, val)
-      //   // remove after duration
-      //   setTimeout(() => {
-      //     self.removeNotificationById(val.id)
-      //   }, val.duration)
-      //   return val.id
-      // },
-      // removeNotificationById(id: string): void {
-      //   // does not seem to work for many???
-      //   self.notifications.delete(id)
-      // },
-      // removeAllNotifications(): void {
-      //   self.notifications.clear()
-      // },
       setSingleColumnView(val: boolean): void {
         self.singleColumnView = val
       },
