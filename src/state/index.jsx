@@ -7,13 +7,6 @@ import { ObservablePersistLocalStorage } from '@legendapp/state/persist-plugins/
 
 configureObservablePersistence({
   persistLocal: ObservablePersistLocalStorage,
-  // persistLocalOptions: {
-  //   indexedDB: {
-  //     databaseName: 'state',
-  //     version: 1,
-  //     tableNames: ['state'],
-  //   },
-  // },
 })
 
 export const state$ = observable({
