@@ -36,7 +36,7 @@ export const state$ = observable({
     }, val.duration)
     return val.id
   },
-  removeNotificationById: (id: string) => {
+  removeNotificationById: (id) => {
     const notifs = state$.notifications.get()
     delete notifs[id]
     state$.notifications.set(notifs)
