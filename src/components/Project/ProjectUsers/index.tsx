@@ -77,11 +77,12 @@ const ProjectUsersIndex = () => {
   const dbid: string = localStorage.getItem('remoteDbid')
   const ctx = useDB(dbid)
 
-  const projectUsersCount = useQuery<number>(
-    ctx,
-    `SELECT count(*) FROM project_users where deleted = 0 and project_id = ? group by id`,
-    [projectId],
-  ).data.count
+  const projectUsersCount =
+    useQuery<number>(
+      ctx,
+      `SELECT count(*) FROM project_users where deleted = 0 and project_id = ? group by id`,
+      [projectId],
+    ).data?.[0] ?? 0
 
   console.log('ProjectUsers, projectUsersCount:', projectUsersCount)
 
