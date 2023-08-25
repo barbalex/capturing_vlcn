@@ -41,10 +41,12 @@ export const state$ = observable({
     delete notifs[id]
     state$.notifications.set(notifs)
   },
-  // TODO: set udefined when implementing auth
-  userRole: 'account_manager',
-  // TODO: set udefined when implementing auth
-  userEmail: 'alex@gabriel-software.ch',
+  user: {
+    // TODO: set udefined when implementing auth
+    role: 'account_manager',
+    // TODO: set udefined when implementing auth
+    email: 'alex@gabriel-software.ch',
+  },
 })
 
 window.state = state$

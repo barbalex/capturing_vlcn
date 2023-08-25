@@ -59,7 +59,7 @@ const ProjectsPage = () => {
   const showTree: boolean = state$.showTree.use()
   const showForm: boolean = state$.showForm.use()
   const mapInitiated: boolean = state$.mapInitiated.use()
-  const userEmail: string = state$.userEmail.use()
+  const userEmail: string = state$.user.email.use()
 
   // console.log('Projects, mapInitiated:', mapInitiated)
 

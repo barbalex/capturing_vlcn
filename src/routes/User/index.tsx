@@ -40,7 +40,7 @@ const AccordionP = styled.p`
 export const User = observer(() => {
   const store: IStore = useContext(StoreContext)
   const { online } = store
-  const userEmail = state$.userEmail.use()
+  const userEmail = state$.user.email.use()
 
   const navigate = useNavigate()
 

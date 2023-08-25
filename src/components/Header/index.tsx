@@ -24,7 +24,7 @@ const StyledAppBar = styled(AppBar)`
   }
 `
 export const Header = observer(() => {
-  const userEmail = state$.userEmail.use()
+  const userEmail = state$.user.email.use()
 
   return (
     <ErrorBoundary>

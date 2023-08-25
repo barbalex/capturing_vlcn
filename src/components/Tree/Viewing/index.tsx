@@ -49,7 +49,7 @@ const ViewingProject = ({ project }: Props) => {
   const store: IStore = useContext(storeContext)
   const { nodes } = store
 
-  const userRole = state$.userRole.use()
+  const userRole = state$.user.role.use()
 
   // query child tables
   // if none and user may not edit structure: do not render

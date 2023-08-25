@@ -70,8 +70,8 @@ const typeValueLabels = {
 const TableForm = ({ showFilter }: TableFormProps) => {
   const { projectId, tableId } = useParams()
 
-  const userEmail = state$.userEmail.use()
-  const userRole = state$.userRole.use()
+  const userEmail = state$.user.email.use()
+  const userRole = state$.user.role.use()
 
   const store: IStore = useContext(StoreContext)
   const { filter, errors, rebuildTree } = store

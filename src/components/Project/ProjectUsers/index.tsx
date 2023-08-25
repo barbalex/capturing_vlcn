@@ -47,7 +47,7 @@ const AddButton = styled(Button)``
 
 const ProjectUsersIndex = () => {
   const { projectId } = useParams()
-  const userRole = state$.userRole.use()
+  const userRole = state$.user.role.use()
 
   const [addNew, setAddNew] = useState<boolean>(false)
 

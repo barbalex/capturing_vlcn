@@ -47,7 +47,7 @@ const TitleSymbols = styled.div`
 
 export const FormTitle = withResizeDetector(
   observer(({ totalCount, filteredCount, width }) => {
-    const userRole = state$.userRole.use()
+    const userRole = state$.user.role.use()
     const userMayEdit: boolean = [
       'account_manager',
       'project_manager',

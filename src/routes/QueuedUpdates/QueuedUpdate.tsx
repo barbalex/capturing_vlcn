@@ -62,7 +62,7 @@ const QueuedUpdateComponent = ({ qu, pureData }: Props) => {
   const { rebuildTree } = store
   const { id, time, table: tableName, is: isRaw, was: wasRaw } = qu
 
-  const userEmail = state$.userEmail.use()
+  const userEmail = state$.user.email.use()
 
   const is = useMemo(() => (isRaw ? JSON.parse(isRaw) : {}), [isRaw])
   const was = wasRaw ? JSON.parse(wasRaw) : null

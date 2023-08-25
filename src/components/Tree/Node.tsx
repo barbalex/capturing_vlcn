@@ -60,7 +60,7 @@ const Node = ({ node }: Props): React.FC => {
   const navigate = useNavigate()
   const { search } = useLocation()
 
-  const userRole = state$.userRole.use()
+  const userRole = state$.user.role.use()
 
   const store: IStoreSnapshotOut = useContext(storeContext)
   const {

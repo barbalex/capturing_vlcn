@@ -85,7 +85,7 @@ const CloseIcon = styled(IconButton)`
 `
 
 const QueuedUpdatesComponent = (): React.FC => {
-  const userEmail = state$.userEmail.use()
+  const userEmail = state$.user.email.use()
 
   const navigate = useNavigate()
 

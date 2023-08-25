@@ -113,7 +113,7 @@ export const Projects = observer((): React.FC => {
   const showTree = state$.showTree.use()
   const showForm = state$.showForm.use()
   const mapInitiated = state$.mapInitiated.use()
-  const userEmail = state$.userEmail.use()
+  const userEmail = state$.user.email.use()
 
   const containerEl = useRef(null)
 
