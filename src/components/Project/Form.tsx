@@ -200,7 +200,6 @@ export const Form = observer(({ showFilter }: ProjectFormProps) => {
           />
         </FieldsContainer>
         <ProjectUsers key={`${row.id}ProjectUsers`} />
-        'TODO: add project users'
       </FormContainer>
     </ErrorBoundary>
   )

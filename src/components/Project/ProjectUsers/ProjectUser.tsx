@@ -24,7 +24,7 @@ type Props = {
   projectUser: ProjectUser
 }
 
-const ProjectUserComponent = ({ projectUser }: Props) => {
+const PUC = ({ projectUser }: Props) => {
   const { session } = useContext(storeContext)
   const onClickRemove = useCallback(() => {
     projectUser.deleteOnServerAndClient({ session })
@@ -47,4 +47,4 @@ const ProjectUserComponent = ({ projectUser }: Props) => {
   )
 }
 
-export default observer(ProjectUserComponent)
+export const ProjectUserComponent = observer(PUC)

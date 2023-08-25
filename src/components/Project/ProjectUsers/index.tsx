@@ -11,7 +11,7 @@ import { observer } from 'mobx-react-lite'
 
 import { ErrorBoundary } from '../../shared/ErrorBoundary'
 import constants from '../../../utils/constants'
-import ProjectUsersComponent from './ProjectUsers'
+import { ProjectUsersComponent } from './ProjectUsers'
 import AddProjectUser from './AddProjectUser'
 
 const TitleRow = styled.div`
