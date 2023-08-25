@@ -18,6 +18,7 @@ import isNodeOpen from './isNodeOpen'
 import toggleNodeSymbol from './toggleNodeSymbol'
 import { IStoreSnapshotOut } from '../../store'
 import { TreeNode } from './Viewing'
+import { state$ } from '../../state'
 
 const Container = styled.div``
 const Indent = styled.div`
@@ -60,6 +61,8 @@ const Node = ({ node }: Props): React.FC => {
   const navigate = useNavigate()
   const { search } = useLocation()
 
+  const userEmail = state$.userEmail.use()
+
   const store: IStoreSnapshotOut = useContext(storeContext)
   const {
     activeNodeArray: aNARaw,
@@ -67,7 +70,6 @@ const Node = ({ node }: Props): React.FC => {
     editingProjects,
     setProjectEditing,
     addNode,
-    session,
     nodes,
   } = store
   const activeNodeArray: string[] = aNARaw.slice()
@@ -100,11 +102,11 @@ const Node = ({ node }: Props): React.FC => {
   const userMayEditStructure = useLiveQuery(async () => {
     const projectUser = await dexie.project_users.get({
       project_id: node.id,
-      email: session?.user?.email,
+      email: userEmail,
     })
 
     return ['account_manager', 'project_manager'].includes(projectUser?.role)
-  }, [session?.user?.email])
+  }, [userEmail])
 
   const onClickIndent = useCallback(async () => {
     if (node.type === 'project' && !editing && isActive) {

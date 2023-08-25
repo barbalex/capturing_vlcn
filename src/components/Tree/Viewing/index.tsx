@@ -18,6 +18,7 @@ import {
   ProjectUser,
 } from '../../../dexieClient'
 import { IStore } from '../../../store'
+import { state$ } from '../../../state'
 
 interface Props {
   project: Project
@@ -47,7 +48,9 @@ export interface TreeNode {
 
 const ViewingProject = ({ project }: Props) => {
   const store: IStore = useContext(storeContext)
-  const { nodes, session } = store
+  const { nodes } = store
+
+  const userEmail = state$.userEmail.use()
 
   // query child tables
   // if none and user may not edit structure: do not render
@@ -61,7 +64,7 @@ const ViewingProject = ({ project }: Props) => {
         .count()
       const projectUser: ProjectUser = await dexie.project_users.get({
         project_id: project.id,
-        email: session?.user?.email,
+        email: userEmail,
       })
 
       const userMayEditStructure = [
@@ -69,7 +72,7 @@ const ViewingProject = ({ project }: Props) => {
         'project_manager',
       ].includes(projectUser?.role)
       return { tablesCount, userMayEditStructure }
-    }, [project.id, session]) ?? []
+    }, [project.id, userEmail]) ?? []
 
   const tablesCount: number = data?.tablesCount ?? 0
   const userMayEditStructure: boolean = data?.userMayEditStructure ?? false

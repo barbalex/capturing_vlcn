@@ -10,6 +10,7 @@ import StoreContext from '../../storeContext'
 import { dexie, Project, Table, QueuedUpdate } from '../../dexieClient'
 import syntaxHighlightJson from '../../utils/syntaxHighlightJson'
 import extractPureData from '../../utils/extractPureData'
+import { state$ } from '../../state'
 
 // to hover and style row, see: https://stackoverflow.com/a/48109479/712005
 const Value = styled.div``
@@ -58,8 +59,10 @@ interface Props {
 
 const QueuedUpdateComponent = ({ qu, pureData }: Props) => {
   const store = useContext(StoreContext)
-  const { rebuildTree, session } = store
+  const { rebuildTree } = store
   const { id, time, table: tableName, is: isRaw, was: wasRaw } = qu
+
+  const userEmail = state$.userEmail.use()
 
   const is = useMemo(() => (isRaw ? JSON.parse(isRaw) : {}), [isRaw])
   const was = wasRaw ? JSON.parse(wasRaw) : null
@@ -105,7 +108,7 @@ const QueuedUpdateComponent = ({ qu, pureData }: Props) => {
     const val = {
       ...is,
       client_rev_at: new window.Date().toISOString(),
-      client_rev_by: session.user?.email ?? session.user?.id,
+      client_rev_by: userEmail,
     }
     if (isInsert || isUndeletion) {
       val.deleted = 1
@@ -133,8 +136,6 @@ const QueuedUpdateComponent = ({ qu, pureData }: Props) => {
     dexie.queued_updates.delete(id)
   }, [
     is,
-    session.user?.email,
-    session.user?.id,
     isInsert,
     isUndeletion,
     isDeletion,
@@ -143,6 +144,7 @@ const QueuedUpdateComponent = ({ qu, pureData }: Props) => {
     rowId,
     rebuildTree,
     id,
+    userEmail,
   ])
 
   const timeValue = dayjs(time).format('YYYY.MM.DD HH:mm:ss')

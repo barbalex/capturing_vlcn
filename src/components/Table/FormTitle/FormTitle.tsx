@@ -1,4 +1,3 @@
-import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from '@emotion/styled'
 import { withResizeDetector } from 'react-resize-detector'
@@ -6,13 +5,13 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { useParams } from 'react-router-dom'
 
 import DeleteButton from './DeleteButton'
-import {AddButton} from './AddButton'
+import { AddButton } from './AddButton'
 import NavButtons from './NavButtons'
 import ZoomToButton from './ZoomToButton'
 import FilterNumbers from '../../shared/FilterNumbers'
 import Menu from '../../shared/Menu'
 import { dexie, IProjectUser } from '../../../dexieClient'
-import storeContext from '../../../storeContext'
+import { state$ } from '../../../state'
 
 const TitleContainer = styled.div`
   background-color: rgba(74, 20, 140, 0.1);
@@ -57,12 +56,12 @@ interface Props {
 
 const TableFormTitle = ({ totalCount, filteredCount, width }: Props) => {
   const { projectId } = useParams()
-  const { session } = useContext(storeContext)
+  const userEmail = state$.userEmail.use()
 
   const userMayEdit: boolean = useLiveQuery(async () => {
     const projectUser: IProjectUser = await dexie.project_users.get({
       project_id: projectId,
-      email: session?.user?.email,
+      email: userEmail,
     })
     const userRole = projectUser.role
     const userMayEdit = [
@@ -72,7 +71,7 @@ const TableFormTitle = ({ totalCount, filteredCount, width }: Props) => {
     ].includes(userRole)
 
     return userMayEdit
-  }, [projectId, session?.user?.email])
+  }, [projectId, userEmail])
 
   if (width < 600) {
     return (
