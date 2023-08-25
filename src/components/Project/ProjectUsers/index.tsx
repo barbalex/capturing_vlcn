@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import List from '@mui/material/List'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { useQuery, useDB } from '@vlcn.io/react'
 import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
@@ -14,6 +15,7 @@ import constants from '../../../utils/constants'
 import ProjectUsersComponent from './ProjectUsers'
 import AddProjectUser from './AddProjectUser'
 import { dexie } from '../../../dexieClient'
+
 import storeContext from '../../../storeContext'
 
 const TitleRow = styled.div`
@@ -76,6 +78,15 @@ const ProjectUsersIndex = () => {
   const onClickAddUser = useCallback(() => {
     setAddNew(true)
   }, [])
+
+  const dbid: string = localStorage.getItem('remoteDbid')
+  const ctx = useDB(dbid)
+
+  const projectUsersCount = useQuery<number>(
+    ctx,
+    `SELECT count(*) FROM project_users where deleted = 0 and project_id = ? group by id`,
+    [projectId],
+  ).data
 
   const data = useLiveQuery(async () => {
     // TODO:
