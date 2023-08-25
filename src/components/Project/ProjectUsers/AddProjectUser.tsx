@@ -3,9 +3,8 @@ import styled from '@emotion/styled'
 import { useParams } from 'react-router-dom'
 import Button from '@mui/material/Button'
 
-import TextField from '../../shared/TextField'
-import RadioButtonGroup from '../../shared/RadioButtonGroup'
-import insertProjectUser from '../../../utils/insertProjectUser'
+import { TextField } from '../../shared/TextField'
+import { RadioButtonGroup } from '../../shared/RadioButtonGroup'
 
 const Container = styled.div`
   display: flex;
@@ -56,11 +55,11 @@ const AddProjectUser = ({ setAddNew }) => {
       setState({ ...state, [e.target.name]: e.target.value })
       if (state.email && state.role) {
         // TODO: insert project_user
-        insertProjectUser({
-          projectId,
-          email: state.email,
-          role: state.role,
-        })
+        // insertProjectUser({
+        //   projectId,
+        //   email: state.email,
+        //   role: state.role,
+        // })
         setAddNew(false)
       }
     },
@@ -68,11 +67,12 @@ const AddProjectUser = ({ setAddNew }) => {
   )
   const onClickStop = useCallback(() => setAddNew(false), [setAddNew])
   const onClickSave = useCallback(() => {
-    insertProjectUser({
-      projectId,
-      email: state.email,
-      role: state.role,
-    })
+    // TODO: insert project_user
+    // insertProjectUser({
+    //   projectId,
+    //   email: state.email,
+    //   role: state.role,
+    // })
     setAddNew(false)
   }, [projectId, setAddNew, state.role, state.email])
 

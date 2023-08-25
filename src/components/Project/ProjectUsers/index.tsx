@@ -1,11 +1,10 @@
-import { useCallback, useState, useContext } from 'react'
+import { useCallback, useState } from 'react'
 import styled from '@emotion/styled'
 import { motion, useAnimation } from 'framer-motion'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import List from '@mui/material/List'
-import { useLiveQuery } from 'dexie-react-hooks'
 import { useQuery, useDB } from '@vlcn.io/react'
 import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
@@ -14,9 +13,6 @@ import { ErrorBoundary } from '../../shared/ErrorBoundary'
 import constants from '../../../utils/constants'
 import ProjectUsersComponent from './ProjectUsers'
 import AddProjectUser from './AddProjectUser'
-import { dexie } from '../../../dexieClient'
-
-import storeContext from '../../../storeContext'
 
 const TitleRow = styled.div`
   background-color: rgba(248, 243, 254, 1);
@@ -49,7 +45,6 @@ const AddButtonRow = styled.div`
 const AddButton = styled(Button)``
 
 const ProjectUsersIndex = () => {
-  const { session } = useContext(storeContext)
   const { projectId } = useParams()
 
   const [addNew, setAddNew] = useState<boolean>(false)
@@ -86,28 +81,31 @@ const ProjectUsersIndex = () => {
     ctx,
     `SELECT count(*) FROM project_users where deleted = 0 and project_id = ? group by id`,
     [projectId],
-  ).data
+  ).data.count
 
-  const data = useLiveQuery(async () => {
-    // TODO:
-    const [projectUsersCount, projectUser] = await Promise.all([
-      dexie.project_users.where({ deleted: 0, project_id: projectId }).count(),
-      dexie.project_users.get({
-        project_id: projectId,
-        email: session?.user?.email,
-      }),
-    ])
+  console.log('ProjectUsers, projectUsersCount:', projectUsersCount)
 
-    const userMayEdit: boolean = [
-      'account_manager',
-      'project_manager',
-    ].includes(projectUser?.role)
+  // const data = useLiveQuery(async () => {
+  //   // TODO:
+  //   const [projectUsersCount, projectUser] = await Promise.all([
+  //     dexie.project_users.where({ deleted: 0, project_id: projectId }).count(),
+  //     dexie.project_users.get({
+  //       project_id: projectId,
+  //       email: session?.user?.email,
+  //     }),
+  //   ])
 
-    return { projectUsersCount, userMayEdit }
-  })
+  //   const userMayEdit: boolean = [
+  //     'account_manager',
+  //     'project_manager',
+  //   ].includes(projectUser?.role)
 
-  const projectUsersCount = data?.projectUsersCount ?? 0
-  const userMayEdit = data?.userMayEdit ?? false
+  //   return { projectUsersCount, userMayEdit }
+  // })
+
+  // const projectUsersCount = data?.projectUsersCount ?? 0
+  // const userMayEdit = data?.userMayEdit ?? false
+  const userMayEdit = false
 
   return (
     <ErrorBoundary>

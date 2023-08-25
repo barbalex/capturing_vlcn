@@ -56,7 +56,7 @@ interface Props {
   onBlur: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const RadioButtonGroup = ({
+const RBG = ({
   value: valuePassed,
   label,
   labelSize = 1,
@@ -173,4 +173,4 @@ const RadioButtonGroup = ({
   )
 }
 
-export default observer(RadioButtonGroup)
+export const RadioButtonGroup = observer(RBG)
