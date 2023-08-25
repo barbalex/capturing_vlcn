@@ -34,7 +34,7 @@ const TableDeleteButton = ({ userMayEdit }: Props) => {
   const navigate = useNavigate()
   const { tableId } = useParams()
   const store: IStore = useContext(StoreContext)
-  const { activeNodeArray, removeNodeWithChildren, session } = store
+  const { activeNodeArray, removeNodeWithChildren } = store
   // const filter = { todo: 'TODO: was in store' }
 
   const deleted = useLiveQuery(async () => {
@@ -54,12 +54,12 @@ const TableDeleteButton = ({ userMayEdit }: Props) => {
   )
   const remove = useCallback(async () => {
     const table: Table = await dexie.ttables.get(tableId)
-    table.deleteOnServerAndClient({ session })
+    table.deleteOnServerAndClient()
     setAnchorEl(null)
     // need to remove node from nodes
     removeNodeWithChildren(activeNodeArray)
     navigate(resolvePath(`..`, window.location.pathname))
-  }, [activeNodeArray, navigate, removeNodeWithChildren, session, tableId])
+  }, [activeNodeArray, navigate, removeNodeWithChildren, tableId])
 
   return (
     <ErrorBoundary>

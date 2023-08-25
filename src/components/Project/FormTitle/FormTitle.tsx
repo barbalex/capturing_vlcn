@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import styled from '@emotion/styled'
 import { withResizeDetector } from 'react-resize-detector'
 import { useQuery, useDB } from '@vlcn.io/react'
@@ -11,8 +10,8 @@ import { NavButtons } from './NavButtons'
 import { FilterNumbers } from '../../shared/FilterNumbers'
 import { Menu } from '../../shared/Menu'
 import { EditButton } from './EditButton'
-import storeContext from '../../../storeContext'
 import { ProjectUser } from '../../../utils/models'
+import { state$ } from '../../../state'
 
 const TitleContainer = styled.div` 
   background-color: rgba(74, 20, 140, 0.1);
@@ -51,8 +50,9 @@ const TitleSymbols = styled.div`
 
 export const FormTitle = withResizeDetector(
   observer(({ totalCount, filteredCount, width }) => {
-    const { session } = useContext(storeContext)
     const { projectId } = useParams()
+
+    const userEmail = state$.userEmail.use()
 
     const dbid: string = localStorage.getItem('remoteDbid')
     const ctx = useDB(dbid)
@@ -60,7 +60,7 @@ export const FormTitle = withResizeDetector(
     const projectUser = useQuery<ProjectUser>(
       ctx,
       'SELECT * FROM project_users where project_id = ? and email = ?',
-      [projectId, session?.user?.email],
+      [projectId, userEmail],
     ).data
 
     const userMayEdit: boolean = [

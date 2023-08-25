@@ -13,6 +13,7 @@ import { ErrorBoundary } from '../../shared/ErrorBoundary'
 import constants from '../../../utils/constants'
 import { ProjectUsersComponent } from './ProjectUsers'
 import AddProjectUser from './AddProjectUser'
+import { state$ } from '../../../state'
 
 const TitleRow = styled.div`
   background-color: rgba(248, 243, 254, 1);
@@ -46,6 +47,7 @@ const AddButton = styled(Button)``
 
 const ProjectUsersIndex = () => {
   const { projectId } = useParams()
+  const role = state$.role.use()
 
   const [addNew, setAddNew] = useState<boolean>(false)
 
@@ -86,27 +88,9 @@ const ProjectUsersIndex = () => {
 
   console.log('ProjectUsers, projectUsersCount:', projectUsersCount)
 
-  // const data = useLiveQuery(async () => {
-  //   // TODO:
-  //   const [projectUsersCount, projectUser] = await Promise.all([
-  //     dexie.project_users.where({ deleted: 0, project_id: projectId }).count(),
-  //     dexie.project_users.get({
-  //       project_id: projectId,
-  //       email: session?.user?.email,
-  //     }),
-  //   ])
-
-  //   const userMayEdit: boolean = [
-  //     'account_manager',
-  //     'project_manager',
-  //   ].includes(projectUser?.role)
-
-  //   return { projectUsersCount, userMayEdit }
-  // })
-
-  // const projectUsersCount = data?.projectUsersCount ?? 0
-  // const userMayEdit = data?.userMayEdit ?? false
-  const userMayEdit = false
+  const userMayEdit: boolean = ['account_manager', 'project_manager'].includes(
+    projectUser?.role,
+  )
 
   return (
     <ErrorBoundary>

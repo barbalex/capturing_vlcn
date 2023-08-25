@@ -38,6 +38,7 @@ import labelFromLabeledTable from '../../../utils/labelFromLabeledTable'
 import RowLabel from './RowLabel'
 import LayerStyle from '../../shared/LayerStyle'
 import { IStore } from '../../../store'
+import { state$ } from '../../../state'
 
 const FieldsContainer = styled.div`
   padding: 10px;
@@ -68,9 +69,10 @@ const typeValueLabels = {
 // = '99999999-9999-9999-9999-999999999999'
 const TableForm = ({ showFilter }: TableFormProps) => {
   const { projectId, tableId } = useParams()
+  const userEmail = state$.userEmail.use()
 
   const store: IStore = useContext(StoreContext)
-  const { filter, errors, rebuildTree, session } = store
+  const { filter, errors, rebuildTree } = store
 
   const unsetError = useCallback(
     () => () => {
@@ -92,7 +94,7 @@ const TableForm = ({ showFilter }: TableFormProps) => {
       dexie.ttables.get(tableId),
       dexie.project_users.get({
         project_id: projectId,
-        email: session?.user?.email,
+        email: userEmail,
       }),
     ])
 
@@ -123,7 +125,7 @@ const TableForm = ({ showFilter }: TableFormProps) => {
       row,
       userMayEdit,
     }
-  }, [projectId, tableId, session?.user?.email])
+  }, [projectId, tableId, userEmail])
 
   const useLabels: boolean = data?.useLabels
   const row: Table = data?.row
@@ -155,11 +157,10 @@ const TableForm = ({ showFilter }: TableFormProps) => {
     row.updateOnServer({
       was: originalRow.current,
       is: rowState.current,
-      session,
     })
     // ensure originalRow is reset too
     originalRow.current = rowState.current
-  }, [row, session])
+  }, [row])
 
   useEffect(() => {
     window.onbeforeunload = () => {

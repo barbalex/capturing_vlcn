@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react'
+import { useCallback } from 'react'
 import styled from '@emotion/styled'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
@@ -7,7 +7,6 @@ import { FaRegTimesCircle } from 'react-icons/fa'
 import { observer } from 'mobx-react-lite'
 
 import { ProjectUser } from '../../../dexieClient'
-import storeContext from '../../../storeContext'
 
 const StyledListItem = styled(ListItem)`
   padding-left: 8px;
@@ -25,10 +24,9 @@ type Props = {
 }
 
 const PUC = ({ projectUser }: Props) => {
-  const { session } = useContext(storeContext)
   const onClickRemove = useCallback(() => {
-    projectUser.deleteOnServerAndClient({ session })
-  }, [projectUser, session])
+    projectUser.deleteOnServerAndClient()
+  }, [projectUser])
 
   return (
     <StyledListItem
