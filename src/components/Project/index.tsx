@@ -20,7 +20,6 @@ export const Project = ({ filter: showFilter }) => {
     <ErrorBoundary>
       <Container showfilter={showFilter}>
         <FormTitle showFilter={showFilter} />
-        'TODO: FormTitle'
         <Form showFilter={showFilter} />
       </Container>
     </ErrorBoundary>
