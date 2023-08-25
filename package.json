@@ -14,7 +14,7 @@
     "@emotion/styled": "11.11.0",
     "@fontsource/roboto": "5.0.8",
     "@legendapp/state": "1.10.2",
-    "@mui/material": "5.14.5",
+    "@mui/material": "5.14.6",
     "@vlcn.io/crsqlite-wasm": "0.14.0",
     "@vlcn.io/direct-connect-browser": "0.4.0",
     "@vlcn.io/direct-connect-common": "0.5.0",
@@ -53,7 +53,7 @@
     "eslint": "8.47.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-refresh": "0.4.3",
-    "typescript": "5.1.6",
+    "typescript": "5.2.2",
     "vite": "4.4.9",
     "vite-plugin-pwa": "0.16.4"
   },
