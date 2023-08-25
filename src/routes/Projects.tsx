@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import StoreContext from '../storeContext'
-// import { Login } from '../components/Login'
+import { Login } from '../components/Login'
 import constants from '../utils/constants'
 // import Tree from '../components/Tree'
 // import MapComponent from '../components/Map'
@@ -108,17 +108,12 @@ const animate = {
 
 export const Projects = observer((): React.FC => {
   const store: IStore = useContext(StoreContext)
-  const {
-    horizontalNavIds,
-    activeNodeArray,
-    previousActiveNodeArray,
-    // session,
-    // sessionCounter,
-  } = store
+  const { horizontalNavIds, activeNodeArray, previousActiveNodeArray } = store
   const showMap = state$.showMap.use()
   const showTree = state$.showTree.use()
   const showForm = state$.showForm.use()
   const mapInitiated = state$.mapInitiated.use()
+  const userEmail = state$.userEmail.use()
 
   const containerEl = useRef(null)
 
@@ -127,7 +122,7 @@ export const Projects = observer((): React.FC => {
   }, [])
 
   // TODO:
-  // if (!session || sessionCounter === 0) return <Login />
+  if (!userEmail) return <Login />
 
   /**
    * Idea for preventing map from being re-initialized on tab changes

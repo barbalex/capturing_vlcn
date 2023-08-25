@@ -1,4 +1,4 @@
-import { useEffect, useContext, useCallback, useState } from 'react'
+import { useEffect, useCallback, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import { FaTimes } from 'react-icons/fa'
 import IconButton from '@mui/material/IconButton'
@@ -9,11 +9,10 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { useNavigate } from 'react-router-dom'
 
 import { dexie, QueuedUpdate, tables } from '../../dexieClient'
-import StoreContext from '../../storeContext'
 import Login from '../../components/Login'
 import constants from '../../utils/constants'
-import { IStoreSnapshotOut } from '../../store'
 import QueuedUpdateComponent from './QueuedUpdate'
+import { state$ } from '../../state'
 
 const Container = styled.div`
   min-height: calc(100vh - ${constants.appBarHeight}px);
@@ -86,8 +85,7 @@ const CloseIcon = styled(IconButton)`
 `
 
 const QueuedUpdatesComponent = (): React.FC => {
-  const store: IStoreSnapshotOut = useContext(StoreContext)
-  const { session, sessionCounter } = store
+  const userEmail = state$.userEmail.use()
 
   const navigate = useNavigate()
 
@@ -122,7 +120,7 @@ const QueuedUpdatesComponent = (): React.FC => {
   const [pureData, setPureData] = useState(true)
   const onClickPureData = useCallback(() => setPureData(!pureData), [pureData])
 
-  if (!session || sessionCounter === 0) return <Login />
+  if (!userEmail) return <Login />
 
   return (
     <Container>

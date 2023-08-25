@@ -55,12 +55,11 @@ const Container = styled.div`
  */
 
 const ProjectsPage = () => {
-  const store: IStore = useContext(StoreContext)
-  const { session } = store
-  const showMap = state$.showMap.use()
-  const showTree = state$.showTree.use()
-  const showForm = state$.showForm.use()
-  const mapInitiated = state$.mapInitiated.use()
+  const showMap: boolean = state$.showMap.use()
+  const showTree: boolean = state$.showTree.use()
+  const showForm: boolean = state$.showForm.use()
+  const mapInitiated: boolean = state$.mapInitiated.use()
+  const userEmail: string = state$.userEmail.use()
 
   // console.log('Projects, mapInitiated:', mapInitiated)
 
@@ -71,7 +70,7 @@ const ProjectsPage = () => {
     document.title = 'Erfassen: Projekte'
   }, [])
 
-  if (!session) return <Login />
+  if (!userEmail) return <Login />
 
   /**
    * Idea for preventing map from being re-initialized on tab changes

@@ -14,6 +14,7 @@ import { Accordion } from '../../components/shared/Accordion'
 import { PendingOperationsDialog } from './PendingOperationsDialog'
 import { PurgeDialog } from './PurgeDialog'
 import { IStore } from '../../store'
+import { state$ } from '../../state'
 
 const Container = styled.div`
   min-height: calc(100vh - ${constants.appBarHeight}px);
@@ -38,9 +39,8 @@ const AccordionP = styled.p`
  */
 export const User = observer(() => {
   const store: IStore = useContext(StoreContext)
-  const { online, session } = store
-
-  const user = session?.user
+  const { online } = store
+  const userEmail = state$.userEmail.use()
 
   const navigate = useNavigate()
 
@@ -66,8 +66,6 @@ export const User = observer(() => {
     window.location.reload(true)
   }, [navigate, queuedUpdatesCount])
 
-  const email = useMemo(() => user?.email ?? {}, [user?.email])
-
   const [resetTitle, setResetTitle] = useState<string>('Passwort zurücksetzen')
   const onClickResetPassword = useCallback(async () => {
     setResetTitle('...')
@@ -86,9 +84,9 @@ export const User = observer(() => {
       setResetTitle('Passwort zurücksetzen')
       setAnchorEl(null)
     }, 5000)
-  }, [email])
+  }, [userEmail])
 
-  if (!session) return <Login />
+  if (!userEmail) return <Login />
 
   // console.log('UserPage rendering', { queuedUpdatesCount, online })
 

@@ -34,13 +34,12 @@ export const App = () => {
   const [store, setStore] = useState<IStore>()
 
   useEffect(() => {
+    // TODO: remove when state moved away
     // on first render regenerate store (if exists)
     dexie.stores.get('store').then((dbStore) => {
       let st
       if (dbStore) {
         // reset some values
-        dbStore.store.session = undefined
-        dbStore.store.sessionCounter = 0
         st = MobxStore.create(dbStore?.store)
       } else {
         st = MobxStore.create()
@@ -60,12 +59,6 @@ export const App = () => {
       }
       // persist store on every snapshot
       onSnapshot(st, (ss) => dexie.stores.put({ id: 'store', store: ss }))
-      // refresh session
-      // supabase.auth.refreshSession()
-      // supabase.auth.onAuthStateChange((event, session) => {
-      //   st.setSession(session)
-      //   st.incrementSessionCounter()
-      // })
     })
 
     return () => {

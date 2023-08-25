@@ -18,11 +18,9 @@ export const ApiDetector = observer(() => {
   const {
     online,
     setOnline,
-  }: // session,
-  {
+  }: {
     online: boolean
     setOnline: (online: boolean) => void
-    // session: Session
   } = store
 
   useEffect(() => {
