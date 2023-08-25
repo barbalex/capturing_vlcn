@@ -58,5 +58,3 @@ const status = persistObservable(state$, {
 await when(status.isLoadedLocal)
 state$.mapInitiated.set(false)
 state$.notifications.set({})
-state$.session.set(undefined)
-state$.sessionCounter.set(0)
