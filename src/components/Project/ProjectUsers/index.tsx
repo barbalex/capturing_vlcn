@@ -9,7 +9,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
-import {ErrorBoundary} from '../../shared/ErrorBoundary'
+import { ErrorBoundary } from '../../shared/ErrorBoundary'
 import constants from '../../../utils/constants'
 import ProjectUsersComponent from './ProjectUsers'
 import AddProjectUser from './AddProjectUser'
@@ -138,4 +138,4 @@ const ProjectUsersIndex = () => {
   )
 }
 
-export default observer(ProjectUsersIndex)
+export const ProjectUsers = observer(ProjectUsersIndex)

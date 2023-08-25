@@ -12,7 +12,7 @@ import { ErrorBoundary } from '../shared/ErrorBoundary'
 import { Spinner } from '../shared/Spinner'
 import { Project } from '../../utils/models'
 import { TextField } from '../shared/TextField'
-// import ProjectUsers from './ProjectUsers'
+import { ProjectUsers } from './ProjectUsers'
 import { IStore } from '../../store'
 
 const FormContainer = styled.div`
@@ -199,7 +199,7 @@ export const Form = observer(({ showFilter }: ProjectFormProps) => {
             error={errors?.project?.account_id}
           />
         </FieldsContainer>
-        {/* <ProjectUsers key={`${row.id}ProjectUsers`} /> */}
+        <ProjectUsers key={`${row.id}ProjectUsers`} />
         'TODO: add project users'
       </FormContainer>
     </ErrorBoundary>
