@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
 import { withResizeDetector } from 'react-resize-detector'
-import { useQuery, useDB } from '@vlcn.io/react'
-import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
 import { DeleteButton } from './DeleteButton'
@@ -10,7 +8,6 @@ import { NavButtons } from './NavButtons'
 import { FilterNumbers } from '../../shared/FilterNumbers'
 import { Menu } from '../../shared/Menu'
 import { EditButton } from './EditButton'
-import { ProjectUser } from '../../../utils/models'
 import { state$ } from '../../../state'
 
 const TitleContainer = styled.div` 
@@ -50,23 +47,11 @@ const TitleSymbols = styled.div`
 
 export const FormTitle = withResizeDetector(
   observer(({ totalCount, filteredCount, width }) => {
-    const { projectId } = useParams()
-
-    const userEmail = state$.userEmail.use()
-
-    const dbid: string = localStorage.getItem('remoteDbid')
-    const ctx = useDB(dbid)
-
-    const projectUser = useQuery<ProjectUser>(
-      ctx,
-      'SELECT * FROM project_users where project_id = ? and email = ?',
-      [projectId, userEmail],
-    ).data
-
+    const userRole = state$.userRole.use()
     const userMayEdit: boolean = [
       'account_manager',
       'project_manager',
-    ].includes(projectUser?.role)
+    ].includes(userRole)
 
     if (width < 760) {
       return (

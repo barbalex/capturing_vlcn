@@ -69,7 +69,9 @@ const typeValueLabels = {
 // = '99999999-9999-9999-9999-999999999999'
 const TableForm = ({ showFilter }: TableFormProps) => {
   const { projectId, tableId } = useParams()
+
   const userEmail = state$.userEmail.use()
+  const userRole = state$.userRole.use()
 
   const store: IStore = useContext(StoreContext)
   const { filter, errors, rebuildTree } = store
@@ -86,19 +88,14 @@ const TableForm = ({ showFilter }: TableFormProps) => {
 
   // const data = {}
   const data = useLiveQuery(async () => {
-    const [project, tables, row, projectUser] = await Promise.all([
+    const [project, tables, row] = await Promise.all([
       dexie.projects.get(projectId),
       dexie.ttables
         .where({ deleted: 0, project_id: projectId, type: 'standard' })
         .toArray(),
       dexie.ttables.get(tableId),
-      dexie.project_users.get({
-        project_id: projectId,
-        email: userEmail,
-      }),
     ])
 
-    const userRole = projectUser?.role
     const userMayEdit = [
       'account_manager',
       'project_manager',

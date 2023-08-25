@@ -15,7 +15,6 @@ import {
   VectorLayer,
   TileLayer,
   Row,
-  ProjectUser,
 } from '../../../dexieClient'
 import { IStore } from '../../../store'
 import { state$ } from '../../../state'
@@ -50,7 +49,7 @@ const ViewingProject = ({ project }: Props) => {
   const store: IStore = useContext(storeContext)
   const { nodes } = store
 
-  const userEmail = state$.userEmail.use()
+  const userRole = state$.userRole.use()
 
   // query child tables
   // if none and user may not edit structure: do not render
@@ -62,20 +61,15 @@ const ViewingProject = ({ project }: Props) => {
           project_id: project.id,
         })
         .count()
-      const projectUser: ProjectUser = await dexie.project_users.get({
-        project_id: project.id,
-        email: userEmail,
-      })
 
-      const userMayEditStructure = [
-        'account_manager',
-        'project_manager',
-      ].includes(projectUser?.role)
-      return { tablesCount, userMayEditStructure }
-    }, [project.id, userEmail]) ?? []
+      return { tablesCount }
+    }, [project.id]) ?? []
 
   const tablesCount: number = data?.tablesCount ?? 0
-  const userMayEditStructure: boolean = data?.userMayEditStructure ?? false
+  const userMayEditStructure: boolean = [
+    'account_manager',
+    'project_manager',
+  ].includes(userRole)
 
   if (tablesCount === 0 && !userMayEditStructure) return null
 

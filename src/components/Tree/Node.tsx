@@ -8,7 +8,6 @@ import styled from '@emotion/styled'
 import isEqual from 'lodash/isEqual'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
-import { useLiveQuery } from 'dexie-react-hooks'
 import { orange } from '@mui/material/colors'
 
 import storeContext from '../../storeContext'
@@ -61,7 +60,7 @@ const Node = ({ node }: Props): React.FC => {
   const navigate = useNavigate()
   const { search } = useLocation()
 
-  const userEmail = state$.userEmail.use()
+  const userRole = state$.userRole.use()
 
   const store: IStoreSnapshotOut = useContext(storeContext)
   const {
@@ -99,14 +98,9 @@ const Node = ({ node }: Props): React.FC => {
     isActive = true
   }
 
-  const userMayEditStructure = useLiveQuery(async () => {
-    const projectUser = await dexie.project_users.get({
-      project_id: node.id,
-      email: userEmail,
-    })
-
-    return ['account_manager', 'project_manager'].includes(projectUser?.role)
-  }, [userEmail])
+  const userMayEditStructure = ['account_manager', 'project_manager'].includes(
+    userRole,
+  )
 
   const onClickIndent = useCallback(async () => {
     if (node.type === 'project' && !editing && isActive) {

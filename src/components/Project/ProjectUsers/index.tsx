@@ -47,7 +47,7 @@ const AddButton = styled(Button)``
 
 const ProjectUsersIndex = () => {
   const { projectId } = useParams()
-  const role = state$.role.use()
+  const userRole = state$.userRole.use()
 
   const [addNew, setAddNew] = useState<boolean>(false)
 
@@ -89,7 +89,7 @@ const ProjectUsersIndex = () => {
   console.log('ProjectUsers, projectUsersCount:', projectUsersCount)
 
   const userMayEdit: boolean = ['account_manager', 'project_manager'].includes(
-    role,
+    userRole,
   )
 
   return (
