@@ -42,9 +42,9 @@ export const state$ = observable({
     state$.notifications.set(notifs)
   },
   user: {
-    // TODO: set udefined when implementing auth
+    // TODO: set undefined when implementing auth
     role: 'account_manager',
-    // TODO: set udefined when implementing auth
+    // TODO: set undefined when implementing auth
     email: 'alex@gabriel-software.ch',
   },
 })
