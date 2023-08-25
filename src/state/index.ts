@@ -24,7 +24,7 @@ export const state$ = observable({
       dismissable: true,
       allDismissable: true,
       type: 'error',
-      // overwrite with passed in ones:
+      // overwrite with passed in values:
       ...valPassed,
     }
     state$.notifications.assign(val.id, val)
