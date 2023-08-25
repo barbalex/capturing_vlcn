@@ -13,9 +13,10 @@ import { NavigationSyncController } from './components/NavigationSyncController'
 import { ColumnController } from './components/ColumnController'
 import { ApiDetector } from './components/ApiDetector'
 import { RouterComponent } from './components/Router'
-import { ExampleEditor } from './components/ExampleEditor.js'
+// import { ExampleEditor } from './components/ExampleEditor.js'
 
 // TODO: auth via firebase?
+// auth is used for syncing: pass userEmail, backend syncs this user's allowed data
 enableReactUse()
 
 // persisting indexedDB: https://dexie.org/docs/StorageManager#controlling-persistence
