@@ -30,7 +30,7 @@ type ProjectFormProps = {
 export const Form = observer(({ showFilter }: ProjectFormProps) => {
   const { projectId } = useParams()
   const store: IStore = useContext(StoreContext)
-  const { filter, errors, rebuildTree, session } = store
+  const { filter, errors, rebuildTree } = store
 
   const dbid: string = localStorage.getItem('remoteDbid')
   const ctx = useDB(dbid)
@@ -72,11 +72,10 @@ export const Form = observer(({ showFilter }: ProjectFormProps) => {
     row.updateOnServer({
       was: originalRow.current,
       is: rowState.current,
-      session,
     })
     // ensure originalRow is reset too
     originalRow.current = rowState.current
-  }, [row, session])
+  }, [row])
 
   useEffect(() => {
     window.onbeforeunload = async () => {

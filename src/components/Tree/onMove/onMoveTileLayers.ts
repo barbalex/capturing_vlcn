@@ -1,11 +1,6 @@
 import { dexie, TileVectorLayer } from '../../../dexieClient'
-import { supabase } from '../../../supabaseClient'
 
 const onMoveTileLayers = async ({ idMoved, folderDroppedIn, endIndex }) => {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
-
   const urlArray = folderDroppedIn.split('/')
   const projectId = urlArray[0]
 
@@ -35,12 +30,12 @@ const onMoveTileLayers = async ({ idMoved, folderDroppedIn, endIndex }) => {
       tileVectorLayer.updateOnServer({
         was,
         is,
-        session,
       })
     }
   }
   // push in bulk to reduce re-renders via liveQuery
   await dexie.tile_layers.bulkPut(tileVectorLayersToUpdate)
+
   return
 }
 

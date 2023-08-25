@@ -1,11 +1,6 @@
 import { dexie, Field } from '../../../dexieClient'
-import { supabase } from '../../../supabaseClient'
 
 const onMoveField = async ({ idMoved, folderDroppedIn, endIndex }) => {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
-
   const urlArray = folderDroppedIn.split('/')
   const tableId = urlArray[0]
 
@@ -35,12 +30,12 @@ const onMoveField = async ({ idMoved, folderDroppedIn, endIndex }) => {
       field.updateOnServer({
         was,
         is,
-        session,
       })
     }
   }
   // push in bulk to reduce re-renders via liveQuery
   await dexie.fields.bulkPut(fieldsToUpdate)
+
   return
 }
 

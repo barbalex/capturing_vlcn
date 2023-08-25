@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useCallback,
-  useRef,
-  useMemo,
-  useContext,
-} from 'react'
+import React, { useEffect, useCallback, useRef, useMemo } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from '@emotion/styled'
 import isEqual from 'lodash/isEqual'
@@ -29,7 +23,6 @@ import Slider from '../Slider'
 import insertLayerStyle from '../../../utils/insertLayerStyle'
 import MarkerSymbolPicker from './MarkerSymbolPicker'
 import constants from '../../../utils/constants'
-import storeContext from '../../../storeContext'
 
 const markerTypeGerman = {
   circle: 'Kreis',
@@ -70,7 +63,6 @@ interface Props {
 }
 
 const LayerStyleForm = ({ userMayEdit, row: layer }: Props) => {
-  const { session } = useContext(storeContext)
   const { vectorLayerId, tableId } = useParams()
 
   // Get these numbers for tables?
@@ -149,11 +141,10 @@ const LayerStyleForm = ({ userMayEdit, row: layer }: Props) => {
     row.updateOnServer({
       was: originalRow.current,
       is: rowState.current,
-      session,
     })
     // ensure originalRow is reset too
     originalRow.current = rowState.current
-  }, [row, session])
+  }, [row])
 
   useEffect(() => {
     window.onbeforeunload = async () => {

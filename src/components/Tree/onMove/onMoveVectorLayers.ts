@@ -1,11 +1,6 @@
 import { dexie, VectorLayer } from '../../../dexieClient'
-import { supabase } from '../../../supabaseClient'
 
 const onMoveVectorLayers = async ({ idMoved, folderDroppedIn, endIndex }) => {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
-
   const urlArray = folderDroppedIn.split('/')
   const projectId = urlArray[0]
 
@@ -35,7 +30,6 @@ const onMoveVectorLayers = async ({ idMoved, folderDroppedIn, endIndex }) => {
       vectorLayer.updateOnServer({
         was,
         is,
-        session,
       })
     }
   }
